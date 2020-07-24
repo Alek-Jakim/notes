@@ -1,4 +1,4 @@
 # Programming
 
 ### Javascript
-* [Arrays](arr.md)
+* [Arrays](./topics/arr.md)
