@@ -5,3 +5,4 @@
 
 ## [MySQL](./topics/mysql.md)
 
+## [Functions](./topics/functions.md)
