@@ -1,5 +1,5 @@
 ```javascript
-    const account = {
+const account = {
     name: 'Alek Jakimovski',
     expenses: [],
     income: [],

@@ -1,2 +1,2 @@
 ## Basics
-* [Arrays](./topics/arr.md)
+* [Arrays](arr.md)

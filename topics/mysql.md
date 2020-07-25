@@ -119,5 +119,93 @@ CREATE TABLE user (
     name VARCHAR(255),
     pass VARCHAR(255)
 );
+
+-- Inserting Data Into Tables
+INSERT INTO table_name(column_name) VALUES (data);
+
+-- For Example 
+INSERT INTO table_name(name, age) VALUES ('Jetson', 7);
+
+
+-- Selecting
+SELECT * FROM tablename; 
+
+-- Inserting Multiple Values
+
+INSERT INTO table_name (column_name, column_name)
+  VALUES (value, value),
+  (value, value),
+  (value, value);
+
+-- Show Warnings
+SHOW WARNINGS; 
 ```
+
+### Delete
+
+Be **VERY** careful with this one. **ALWAYS** select first, delete second.
+
+```sql
+DROP TABLE tableName;
+```
+
+
+### Modify Tables
+
+```sql
+-- Rename a table.
+RENAME TABLE tableName1 TO tableName2;
+
+-- Add a column at end.
+ALTER TABLE tableName ADD columnName DATATYPE;
+
+-- Add a column at certain location.
+ALTER TABLE tableName ADD columnName DATATYPE AFTER columnName;
+
+-- Delete a column.
+ALTER TABLE tableName DROP columnName;
+
+-- Change a column name. Has to be backticks.
+ALTER TABLE tableName CHANGE `oldcolname` `newcolname` datatype(length);
+
+-- Reset AUTO_INCREMENT id. For this to work, the table must be empty.
+ALTER TABLE table AUTO_INCREMENT = 1;
+```
+
+
+
+### SQL Constraints: 
+- NOT NULL
+
+    - By default, a column can hold NULL values.
+
+     - The NOT NULL constraint enforces a column to NOT accept NULL values.
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int
+);
+```
+
+- UNIQUE
+  - The UNIQUE constraint ensures that all values in a column are different.
+
+  - Both the UNIQUE and PRIMARY KEY constraints provide a guarantee for uniqueness for a column or set of columns.
+
+  - A PRIMARY KEY constraint automatically has a UNIQUE constraint.
+
+  - However, you can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL UNIQUE,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+
 
