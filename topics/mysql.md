@@ -4,7 +4,7 @@
 
 ## Topics
 
-* [String Functions](./mysql/string-functions)
+* [String Functions](./mysql/string-functions.md)
 
 ### **Best Practices**
 
