@@ -211,5 +211,3 @@ CREATE TABLE Persons (
     Age int
 );
 ```
-
-
