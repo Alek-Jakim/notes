@@ -2,6 +2,10 @@
 
 --------------
 
+## Topics
+
+* [String Functions](./mysql/string-functions)
+
 ### **Best Practices**
 
 #### Naming Convention
