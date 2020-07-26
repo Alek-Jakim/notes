@@ -5,4 +5,8 @@
 
 ## [MySQL](./topics/mysql.md)
 
-## [Functions](./topics/functions.md)
+---
+# Linux
+
+* [basics](./topics/linux/basics.md)
+
