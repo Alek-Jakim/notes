@@ -12,3 +12,5 @@
 
 * [filesystem](./topics/linux/filesystem.md)
 
+* [shell features](./topics/linux/shell-features.md)
+
