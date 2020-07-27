@@ -43,7 +43,9 @@
 
 `cat file_name ` - read the file
 
-`mv file_name directory_name` - move the file to the specified directory
+`mv file_name directory_name` - move the file to the specified directory 
+
+`mv file_name  new_file_name ` - rename a file
 
 ### Removing Files
 `rm file_name ` - remove the specified file
@@ -54,8 +56,9 @@
 
 `rm -rf / ` - **NEVER** use this, it brings the end of days for your entire system
 
-# Information
+`cd ../..` - Return two directories backwards
 
+# Information
 
 
 ```bash
@@ -66,3 +69,17 @@ df -h                   # Show disk space in readable format
 One of the keys to becoming good at Linux is **using the command line for everything!**
 
 Root directory is the base of the file tree, everything else, including the OS system files, is in it. Home directory is within the root directory, and contains user files, contained in a sub directory for each user. ... There is one root directory for the computer's entire filesystem.
+
+
+## Text Editors
+
+### Nano/Vim/Emacs
+
+Use nano for simple edits, vim or emacs for programming
+
+[Vim](vim.md)
+
+
+
+
+ 

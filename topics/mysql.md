@@ -8,6 +8,8 @@
 
 * [Refined Selecting](./mysql/refined-selections.md)
 
+* [Aggregate Functions](./mysql/aggregate-functions.md)
+
 ### **Best Practices**
 
 #### Naming Convention
