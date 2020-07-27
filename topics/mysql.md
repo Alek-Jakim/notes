@@ -6,6 +6,8 @@
 
 * [String Functions](./mysql/string-functions.md)
 
+* [Refined Selecting](./mysql/refined-selections.md)
+
 ### **Best Practices**
 
 #### Naming Convention
