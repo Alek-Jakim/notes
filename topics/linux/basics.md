@@ -75,7 +75,7 @@ Root directory is the base of the file tree, everything else, including the OS s
 
 ### Nano/Vim/Emacs
 
-Use nano for simple edits, vim or emacs for programming
+Use nano for simple edits, Vim or Emacs for programming.
 
 [Vim](vim.md)
 

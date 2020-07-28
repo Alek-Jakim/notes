@@ -65,3 +65,83 @@ cat somefile.txt
  cat err.txt
  # ls: cannot access 'somesfsdfsdfsfds': No such file or directory
 ```
+
+
+### Filtering Output and Finding Things (&&, cut, sort, uniq, wc, grep)
+
+* The AND Operator (&&) would execute the second command only, if the execution of first command SUCCEEDS, i.e., the exit status of the first command is 0. This command is very useful in checking the execution status of last command.
+
+```bash
+cat file1.txt && echo 'astonishing success'
+
+# I am file1
+# astonishing success
+```
+
+
+* This PIPE operator is very useful where the output of first command acts as an input to the second command. 
+
+* The cut command in UNIX is a command for cutting out the sections from each line of files and writing the result to standard output. It can be used to cut parts of a line by byte position, character and field. Basically the cut command slices a line and extracts the text. It is necessary to specify option with command otherwise it gives error. If more than one file name is provided then data from each file is not precedes by its file name.
+
+```bash
+cut OPTION... [FILE]...
+
+#For info on how to use
+cut --help
+```
+
+* SORT command is used to sort a file, arranging the records in a particular order. By default, the sort command sorts file assuming the contents are ASCII. Using options in sort command, it can also be used to sort numerically.
+
+```bash
+cat mytext.txt | sort -bf
+#sort the contents alphabetically
+
+#Alek
+#Bjorn
+#Cattie
+#Django
+#Elon
+#Freya
+#Goro
+```
+
+* The uniq command in Linux is a command line utility that reports or filters out the repeated lines in a file.
+In simple words, uniq is the tool that helps to detect the adjacent duplicate lines and also deletes the duplicate lines. uniq filters out the adjacent matching lines from the input file(that is required as an argument) and writes the filtered data to the output file .
+
+```bash
+cat alek.txt
+#alek:we
+#user:love
+#someone:linux
+#someone:linux
+
+cat alek.txt | uniq
+#alek:we
+#user:love
+#someone:linux
+```
+
+* wc stands for word count. As the name implies, it is mainly used for counting purpose. First column shows number of lines present in a file specified, second column shows number of words present in the file, third column shows number of characters present in file and fourth column itself is the file name which are given as argument.
+
+```bash
+cat new.txt
+#abcd
+
+wc new.txt
+# 1 1 5 new.txt
+```
+
+* The grep filter searches a file for a particular pattern of characters, and displays all lines that contain that pattern. The pattern that is searched in the file is referred to as the regular expression (grep stands for globally search for regular expression and print out).
+
+```bash
+cat file.txt
+#I am a new file
+
+cat file.txt | grep new
+
+#Searches all files in the directory for that keyword
+grep someone ./*
+
+#It gives us unique someones and cuts the first section before the delimiter -d
+grep someone ./* | uniq | cut -d: -f1
+```
