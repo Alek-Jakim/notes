@@ -15,3 +15,5 @@
 * [shell features](./topics/linux/shell-features.md)
 
 * [package management](./topics/linux/package-man.md)
+
+* [file permissions](./topics/linux/file-permissions.md)
