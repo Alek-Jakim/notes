@@ -2,6 +2,11 @@
 
 An aggregate function performs a calculation on multiple values and returns a single value.
 
+**Note:** Use the code below to disable strict mode
+```sql
+SET @@sql_mode ='';
+```
+
 1. COUNT()
 
 * The `COUNT()` function is an aggregate function that returns the number of rows in a table. The `COUNT()` function allows you to count all rows or only rows that match a specified condition.
@@ -39,4 +44,17 @@ SELECT MIN(released_year) FROM books;
 
 -- gives you the biggest number of pages
 SELECT MAX(pages) FROM books;
+```
+
+
+#### Subqueries
+
+A subquery is a query that is nested inside a SELECT , INSERT , UPDATE , or DELETE statement, or inside another subquery. A subquery can be used anywhere an expression is allowed. In this example a subquery is used as a column expression named MaxUnitPrice in a SELECT statement.
+
+```sql
+# You can do it this way however...
+SELECT title, pages FROM books WHERE pages = (SELECT MAX(pages) FROM books);
+
+#...this gives us the same result and it's faster
+SELECT title, pages FROM books ORDER BY ASC LIMIT 1;
 ```
