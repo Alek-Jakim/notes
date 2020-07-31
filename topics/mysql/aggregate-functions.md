@@ -58,3 +58,28 @@ SELECT title, pages FROM books WHERE pages = (SELECT MAX(pages) FROM books);
 #...this gives us the same result and it's faster
 SELECT title, pages FROM books ORDER BY ASC LIMIT 1;
 ```
+
+
+4. SUM
+
+The SUM() function returns the total sum of a numeric column.
+
+```sql
+SELECT SUM(pages) AS 'total pages' FROM books;
+
+
+SELECT author_fname, author_lname, SUM(pages)
+    -> FROM books
+    -> GROUP BY author_lname, author_fname;
+```
+
+5. AVG
+
+The AVG() function returns the average value of a numeric column.
+
+```sql
+SELECT AVG(pages) FROM books;
+
+
+SELECT released_year, AVG(stock_quantity) FROM books GROUP BY released_year;
+```
