@@ -10,6 +10,8 @@
 
 * [Aggregate Functions](./mysql/aggregate-functions.md)
 
+* [Data Types](./mysql/data-types.md)
+
 ### **Best Practices**
 
 #### Naming Convention
