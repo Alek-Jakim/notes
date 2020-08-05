@@ -41,3 +41,54 @@ INSERT INTO shop(item, price) VALUES('goat', 252.33);
 ### Float and Double
 
 Float data can hold 8 bytes, or 15 places after the decimal point. Double data is similar to float, except that it allows for much larger numbers. They're used to specify precision, that is the number of whole numbers and number of digits shown after the decimal point of a complex number.
+
+
+### Date, Time and Datetime
+
+* The DATE type is used for values with a date part but no time part. MySQL retrieves and displays DATE values in 'YYYY-MM-DD' format. The supported range is '1000-01-01' to '9999-12-31'.
+
+* The DATETIME type is used for values that contain both date and time parts. MySQL retrieves and displays DATETIME values in 'YYYY-MM-DD hh:mm:ss' format. The supported range is '1000-01-01 00:00:00' to '9999-12-31 23:59:59'.
+
+* MySQL retrieves and displays TIME values in 'hh:mm:ss' format (or 'hhh:mm:ss' format for large hours values). TIME values may range from '-838:59:59' to '838:59:59'. The hours part may be so large because the TIME type can be used not only to represent a time of day (which must be less than 24 hours), but also elapsed time or a time interval between two events (which may be much greater than 24 hours, or even negative).
+
+### Currdate, Curtime and Now
+
+* `CURDATE()` - Returns the current date as a value in 'YYYY-MM-DD' or YYYYMMDD format, depending on whether the function is used in string or numeric context.
+
+```sql
+SELECT CURRDATE();
+```
+
+* `CURTIME()` - Returns the current time as a value in 'hh:mm:ss' or hhmmss format, depending on whether the function is used in string or numeric context. The value is expressed in the session time zone.
+
+```sql
+SELECT CURRTIME();
+```
+
+* `NOW()` returns a constant time that indicates the time at which the statement began to execute. (Within a stored function or trigger, NOW() returns the time at which the function or triggering statement began to execute.) This differs from the behavior for SYSDATE(), which returns the exact time at which it executes
+
+```sql
+SELECT NOW();
+
+INSERT INTO people(name, birthdate, birthtime, birthdt)
+    -> VALUES('Myself', CURDATE(), CURTIME(), NOW());
+```
+
+### Formating Dates
+
+```sql
+# Selects the days
+SELECT name, DAY(birthdate) FROM people;
+
+# Gives you the day of the week; ex: Friday, Saturday etc
+SELECT name, DAYNAME(birthdate) FROM people;
+```
+
+* **USEFUL**  - `DATE_FORMAT(date,format)` - Formats the date value according to the format string.
+
+```sql
+SELECT CONCAT(name, ' ', DATE_FORMAT(birthdt, 'Was born on a %W')) FROM
+people;
+
+SELECT DATE_FORMAT('1993-11-20 22:23:00', '%W %M %Y');
+```
