@@ -1311,3 +1311,6 @@ class ProductsPage extends Component {
 
 export default ProductsPage;
 ```
+
+
+## [React Course](./react-course/course.md)
