@@ -15,6 +15,10 @@
 ## Tooling
 
 ## [Git](./topics/git/git.md)
+
+## [Babel](./topics/babel/babel.md)
+
+## [Webpack](./topics/webpack/webpack.md)
 ---
 # Linux
 
