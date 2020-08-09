@@ -21,7 +21,8 @@ SQL data types can be broadly divided into following categories:
 
 VARCHAR is variable length, while CHAR is fixed length. CHAR is a fixed length string data type, so any remaining space in the field is padded with blanks. CHAR takes up 1 byte per character. ... VARCHAR is a variable length string data type, so it holds only the characters you assign to it.
 
-Char is faster for fixed length text.
+Char is faster for fixed length text. Used for text that we know has a fixed length, e.g., State abbreviations, 
+abbreviated company names, sex M/F, etc.
 
 ### Decimals
 
@@ -114,7 +115,14 @@ SELECT birthdt, birthdt + INTERVAL 15 MONTH + INTERVAL 10 HOUR FROM people;
 
 ### Timestamps
 
-* The TIMESTAMP data type is used for values that contain both date and time parts. TIMESTAMP has a range of '1970-01-01 00:00:01' UTC to '2038-01-19 03:14:07' UTC. **This** is important and is the main difference between TIMESTAMP and DATETIME. **USE DATETIME FOR EVERYTHING** except for the following case:
+* The TIMESTAMP data type is used for values that contain both date and time parts. TIMESTAMP has a range of '1970-01-01 00:00:01' UTC to '2038-01-19 03:14:07' UTC. 
+
+What's the difference between DATETIME and TIMESTAMP?
+
+They both store datetime information, but there's a difference in the range, 
+TIMESTAMP has a smaller range. TIMESTAMP also takes up less space. 
+TIMESTAMP is used for things like meta-data about when something is created
+or updated.
 
 ```sql
 CREATE TABLE comments (
