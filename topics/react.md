@@ -120,7 +120,7 @@ The DOM updating is done by the `render()` method in the `react-dom` module. It 
 
 A piece of UI. A javascript class that has some state to be displayed and a render method.
 
-![Components](../pics/react/react_components.jpg)
+![Components](react_components.jpg)
 
 **counter.jsx**
 
