@@ -44,3 +44,51 @@ class VisibilityToggle extends React.Component {
 
 ReactDOM.render(<VisibilityToggle />, document.getElementById('app'));
 ```
+
+
+## ES6 import/export
+
+```javascript
+//utils.js
+const square = x => Math.pow(x, 3);
+const add = (a, b) => a + b;
+
+export { square, add };
+
+//app.js
+import { square, add } from './utils'
+
+console.log(square(10))
+console.log(add(43, 26))
+```
+
+```javascript
+// utils.js
+export const square = x => Math.pow(x, 3);
+export const add = (a, b) => a + b;
+
+//You can directly export them as well
+```
+
+### Default Export
+
+```javascript
+//utils. js
+const subtract = (a, b) => a - b;
+
+export { square, add, subtract as default };
+
+//app.js
+//You have to add subtract before the curly braces because it is a default export
+import subtract, { square, add } from './utils'
+```
+
+One can have only one default export per file. When we import we have to specify a name and import like:
+
+```javascript
+// import
+import MyDefaultComponent from "./MyDefaultExport";
+// export
+const MyComponent = () => {}
+export default MyComponent;
+```
