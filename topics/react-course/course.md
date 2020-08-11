@@ -92,3 +92,61 @@ import MyDefaultComponent from "./MyDefaultExport";
 const MyComponent = () => {}
 export default MyComponent;
 ```
+
+
+### Importing NPM Modules
+
+There are 3 steps: install, import and use.
+
+```bash
+npm install validator
+```
+```javascript
+import validator from 'validator'
+
+console.log(validator.isEmail('test@gmail.com')) // returns true
+```
+
+```bash
+yarn add react react-dom
+```
+```javascript
+import React from 'react' // es6
+import ReactDOM from 'react-dom'// es6
+```
+
+### Setting Up Babel with Webpack
+
+```bash
+yarn add babel-core babel-loader
+```
+
+```javascript
+//webpack.config.js
+module.exports = {
+    entry: './src/app.js',
+    output: {
+        path: path.join(__dirname, 'public'),
+        filename: 'bundle.js'
+    },
+    module: {
+        rules:[{
+            loader: 'babel-loader', 
+            test: /\.js$/,
+            exclude: /node_modules/
+        }]
+    }
+};
+```
+
+Create new `.babelrc` file in the root folder of your app.
+
+```javascript
+//.babelrc
+{
+    "presets": [
+        "env",
+        "react"
+    ]
+}
+```
