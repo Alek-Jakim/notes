@@ -12,6 +12,8 @@
 
 * [Data Types](./mysql/data-types.md)
 
+* [Logical Operators](./mysql/logical-operators.md)
+
 ### **Best Practices**
 
 #### Naming Convention
@@ -217,3 +219,6 @@ CREATE TABLE Persons (
     Age int
 );
 ```
+
+
+[CRUD App](http://mfikri.com/en/blog/nodejs-mysql-crud)
