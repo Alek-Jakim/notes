@@ -35,12 +35,45 @@ const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
-MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client)
+MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: true }, (error, client)
 => {
 if (error) {
 return console.log('Unable to connect to database!')
 }
 const db = client.db(databaseName)
 // Start to interact with the database
+})
+```
+
+[Node.js MondoDB Driver API](https://mongodb.github.io/node-mongodb-native/2.0/api/)
+
+##### Create
+```javascript
+// insertOne
+db.collection('users').insertOne({
+    name: 'Alek',
+    age: 26
+}, (err, res) => {
+    if(err) {
+        return console.log(err)
+    }
+    console.log(res.ops)
+})
+
+//insertMany
+db.collection('tasks').insertMany([
+    {
+        description: 'Task One',
+        completed: true
+    },
+    {
+        description: 'Task Two',
+        completed: false
+    }
+], (err, res) => {
+    if(err) {
+        return consol.log(err)
+    }
+    console.log(res.ops)
 })
 ```
