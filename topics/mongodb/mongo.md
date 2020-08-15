@@ -67,6 +67,11 @@ algorithm to ensure uniqueness. These IDs can be generated on the server, but as
 the snippet above, they can be generated on the client as well. That means a client can
 generate the ID for a document it’s about to insert in to the database.
 
+
+### Promises
+
+The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+
 ----
 #### **CREATE**
 ```javascript
