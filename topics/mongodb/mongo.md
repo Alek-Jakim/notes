@@ -47,9 +47,32 @@ const db = client.db(databaseName)
 
 [Node.js MondoDB Driver API](https://mongodb.github.io/node-mongodb-native/2.0/api/)
 
-##### Create
+#### Object ID
+
+MongoDB uses ObjectIDs to create unique
+identifiers for all the documents in the database. It’s different than the traditional autoincrementing
+integer ID, but it comes with its own set of advantages.
+
+MongoDB provides ObjectID which can be used to generate new ObjectIDs. The
+example below generates a new ID and prints it to the console:
+
+```javascript
+const { MongoClient, ObjectID } = require('mongodb')
+const id = new ObjectID()
+console.log(id) // Print new id to the console
+```
+
+An ObjectID is a GUID (Globally Unique Identifier). GUIDs are generated randomly via an
+algorithm to ensure uniqueness. These IDs can be generated on the server, but as seen in
+the snippet above, they can be generated on the client as well. That means a client can
+generate the ID for a document it’s about to insert in to the database.
+
+----
+#### **CREATE**
 ```javascript
 // insertOne
+const db = client.db(databaseName)
+
 db.collection('users').insertOne({
     name: 'Alek',
     age: 26
@@ -72,8 +95,38 @@ db.collection('tasks').insertMany([
     }
 ], (err, res) => {
     if(err) {
-        return consol.log(err)
+        return console.log(err)
     }
     console.log(res.ops)
 })
 ```
+
+#### **READ**
+
+You can search for documents in a given collection using find or findOne. find can be
+used to fetch multiple documents, while findOne can be used to fetch a single document.
+
+The example below uses find to search for documents in the tasks collection. You can
+provide an object as the first argument to find to filter the documents. The example below
+sets completed equal to false to fetch only those tasks that haven’t been completed.
+
+```javascript
+db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
+console.log(tasks)
+})
+```
+
+The next example uses findOne to find a single document by its ID. In this case, it’s
+necessary to pass the string version of the ID to the ObjectID constructor function to
+convert it to an ObjectID.
+
+```javascript
+db.collection('tasks').findOne({ _id: new
+ObjectID("5c0fec243ef6bdfbe1d62e2f") }, (error, task) => {
+console.log(task)
+})
+```
+
+Documentation:
+* [find](http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#find)
+* [findOne](http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#findOne)
