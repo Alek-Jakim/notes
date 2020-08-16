@@ -135,3 +135,65 @@ console.log(task)
 Documentation:
 * [find](http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#find)
 * [findOne](http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#findOne)
+
+
+#### UPDATE
+
+You can update documents in a collection using `updateOne` or `updateMany`. The first
+argument for both updateOne and updateMany is similar to the first argument used with
+find or findOne. It’s an object that allows you to filter down all the documents to just the ones you want to update.
+ 
+
+```javascript
+db.collection('users').updateOne({
+_id: new ObjectID("5c0fe6634362c1fb75b9d6b5")
+}, {
+$inc: {
+age: 1
+}
+}).then((result) => {
+console.log(result)
+}).catch((error) => {
+console.log(error)
+})
+```
+
+```javascript
+db.collection('tasks').updateMany({
+completed: false
+}, {
+$set: {
+completed: true
+}
+}).then((result) => {
+console.log(result.modifiedCount)
+}).catch((error) => {
+console.log(error)
+```
+
+
+
+#### DELETE
+
+You can delete documents from MongoDB using deleteOne or deleteMany. Both accept
+an object as the first argument. This object is used to filter just the documents you want to delete.
+
+```javascript
+db.collection('users').deleteMany({
+age: 27
+}).then((result) => {
+console.log(result)
+}).catch((error) => {
+console.log(error)
+})
+```
+
+```javascript
+db.collection('tasks').deleteOne({
+description: "Clean the house"
+}).then((result) => {
+console.log(result)
+}).catch((error) => {
+console.log(error)
+})
+```
