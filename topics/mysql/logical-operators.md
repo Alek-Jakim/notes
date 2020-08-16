@@ -29,7 +29,7 @@ SELECT 1 > 99 # Returns 0 (false)
 -- true
 ```
 
-* Not Equal
+#### Not Equal
 
 ```sql
 SELECT title FROM books WHERE released_year != 2017;
@@ -37,14 +37,14 @@ SELECT title FROM books WHERE released_year != 2017;
 SELECT title, author_lname FROM books WHERE author_lname != 'Harris';
 ```
 
-* Not Like
-
+#### Not Like
+---
 ```sql
  SELECT title FROM books WHERE title LIKE 'W%';
 ```
 
 * Greater Than
-
+---
 ```sql
 SELECT title FROM books WHERE title NOT LIKE 'W%';
 
@@ -52,9 +52,8 @@ SELECT title, released_year FROM books WHERE released_year >= 2005;
 
 SELECT title, stock_quantity FROM books WHERE stock_quantity > 100;
 ```
-
-* Less Than
-
+#### Less Than
+---
 ```sql
 SELECT title, released_year FROM books
 WHERE released_year < 2000;
@@ -78,8 +77,8 @@ SELECT 'Q' <= 'q';
 -- true
 ```
 
-* Logical AND
-
+#### Logical AND
+---
 Logical AND. Evaluates to 1 if all operands are nonzero and not NULL, to 0 if one or more operands are 0, otherwise NULL is returned.
 
 **Note:** The && operator is deprecated and support for it will be removed in a future MySQL version. Applications should be adjusted to use the standard SQL AND operator.
@@ -106,8 +105,35 @@ WHERE author_lname='Eggers'
     AND title LIKE '%novel%';
 ```
 
-* Logical OR
-
+#### Logical OR
+---
 Logical OR. When both operands are non-NULL, the result is 1 if any operand is nonzero, and 0 otherwise. With a NULL operand, the result is 1 if the other operand is nonzero, and NULL otherwise. If both operands are NULL, the result is NULL.
 
 **Note:** As of MySQL 8.0.17, the || operator is deprecated. In newer versions of MySQL (8.0.17 and newer) you will need to replace || with OR.
+
+
+
+#### Between
+---
+```sql
+SELECT title, released_year FROM books WHERE released_year >= 2003 AND released_year <= 2013;
+
+# The same can be accomplished like this: 
+
+SELECT title, released_year FROM books WHERE released_year BETWEEN 2003 AND 2013;
+
+# Not Between
+SELECT title, released_year FROM books WHERE released_year NOT BETWEEN 2000 AND 2010;
+
+
+
+SELECT name, birthdt FROM people WHERE birthdt BETWEEN '1980-01-01' AND '2000-01-01';
+ 
+SELECT 
+    name, 
+    birthdt 
+FROM people
+WHERE 
+    birthdt BETWEEN CAST('1980-01-01' AS DATETIME)
+    AND CAST('2000-01-01' AS DATETIME);
+```
