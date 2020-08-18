@@ -6,4 +6,4 @@
 * [Objects](./objects/object.md)
 
 -----
-[JavaScript Challenges](./challenges/js-challenges.md)
+[JavaScript Exercises](./challenges/js-challenges.md)
