@@ -78,3 +78,64 @@ const maxCharacter = (str) => {
     return maxChar;
 }
 ```
+
+7. Create a grade calculator
+
+```javascript
+//Create a grade calculator
+
+const calculateGrades = (score, totalScore) => {
+    let percent = (score / totalScore) * 100;
+
+    return percent >= 90 ? 'You got an A'
+        : percent >= 75 ? 'You got a B'
+            : percent >= 50 ? 'You got a C'
+                : percent >= 30 ? 'You got a D'
+                    : percent < 29 ? 'You got an F'
+                        : 'Please check your input!'
+}
+```
+
+8. Create an Expense Tracker
+```javascript
+let myAccount = {
+    name: 'Alek',
+    expenses: 0,
+    income: 0
+}
+const addIncome = (account, amount) => {
+    return account.income += amount;
+}
+const addExpense = (account, amount) => {
+    return account.expenses += amount;
+}
+const accountBalance = (account) => {
+    return `Your account balance is $${account.income - account.expenses}.`
+}
+```
+
+9. Replace every char in a string with the following char in the alphabet
+
+```javascript
+const moveCharForward = (str) => {
+    return str
+        .split('')
+        .map(char => String.fromCharCode(char.charCodeAt(0) + 1))
+        .join('')
+}
+```
+
+10. Get the current date dd--mm--yyyy
+
+```javascript
+const getCurrDate = () => {
+    const date = new Date();
+    return `Today's date is ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
+}
+```
+
+11. Create a string adding 'New' if the str doesn't already start with New
+
+```javascript
+const novelString = str => str.toLowerCase().includes('new') ? str : 'new ' + str;
+```
