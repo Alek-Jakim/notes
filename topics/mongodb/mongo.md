@@ -197,3 +197,5 @@ console.log(result)
 console.log(error)
 })
 ```
+
+[REST API](./rest-api.md)
