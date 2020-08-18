@@ -124,3 +124,42 @@ res.status(400).send(e)
 })
 })
 ```
+
+
+### Resource Reading Endpoint
+
+Resource reading endpoints use the GET HTTP method. The URL structure is `/resources`
+for a list of resources and `/resources/:id` for fetching an individual resource by its ID. If
+you wanted to fetch all your tasks, it would be `GET /tasks`. If you wanted to fetch an
+individual task with the ID of 198, it would be `GET /tasks/198`.
+
+The code below uses `app.get` to set up a GET request handler for `/users/:id`. `:id` serves
+as a placeholder for the ID of the user to fetch. If the request is `GET /users/321`, then the
+ID will be 321. This is known as a URL parameter, and you can access the value for URL
+parameters on `req.params`.
+
+```javascript
+app.get('/users/:id', (req, res) => {
+const _id = req.params.id // Access the id provided
+User.findById(_id).then((user) => {
+if (!user) {
+return res.status(404).send()
+}
+res.send(user)
+}).catch((e) => {
+res.status(500).send()
+})
+})
+```
+
+```javascript
+app.get('/users', (req, res) => {
+    User.find({})
+        .then((users) => {
+            res.send(users)
+        })
+        .catch((e) => {
+            res.status(500).send()
+        })
+})
+```
