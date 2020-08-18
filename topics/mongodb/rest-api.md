@@ -100,3 +100,27 @@ The root-endpoint is the starting point of the API you’re requesting from. The
 The path determines the resource you’re requesting for. Think of it like an automatic answering machine that asks you to press 1 for a service, press 2 for another service, 3 for yet another service and so on.
 
 ![](rest.png)
+
+### Resource Creation Endpoints
+
+Resource creation endpoints use the POST HTTP method. The URL structure is
+`/resources`. If you wanted to create a user, it would be `POST /users`. If you wanted to
+create a task, it would be `POST /tasks`.
+
+The code below uses `app.post` to set up a POST request handler for `/users`. The handler
+function creates a new instance of the user model and saves it to the database.
+
+`express.json` is also setup to parse incoming JSON into a JavaScript object which you
+can access on `req.body`.
+
+```javascript
+app.use(express.json())
+app.post('/users', (req, res) => {
+const user = new User(req.body)
+user.save().then(() => {
+res.send(user)
+}).catch((e) => {
+res.status(400).send(e)
+})
+})
+```
