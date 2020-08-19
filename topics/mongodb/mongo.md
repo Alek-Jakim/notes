@@ -199,3 +199,5 @@ console.log(error)
 ```
 
 [REST API](./rest-api.md)
+
+[Promises](./promises.md)
