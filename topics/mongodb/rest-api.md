@@ -163,3 +163,100 @@ app.get('/users', (req, res) => {
         })
 })
 ```
+
+### Resource Updating Endpoints
+
+Resource updating endpoints use the PATCH HTTP method. The URL structure is `/resources/:id` for updating an individual resource by its ID. If you want to update an
+individual task with the ID of 44, it would be `PATCH /tasks/44`.
+
+`app.patch` is used to set up the Express route handler.
+
+```javascript
+app.patch('/users/:id', async (req, res) => {
+    // Route handler code here
+})
+```
+
+
+When working with updates, it’s a good idea to alert the user if they’re trying to update something that they can’t update. The code below checks that the user is only updating fields that can be updated, otherwise it will send back an error response.
+
+```javascript
+const updates = Object.keys(req.body)
+const allowedUpdates = ['name', 'email', 'password', 'age']
+const isValidOperation = updates.every((update) =>
+allowedUpdates.includes(update))
+if (!isValidOperation) {
+return res.status(400).send({ error: 'Invalid updates!' })
+}
+```
+
+If the provided updates are valid, `findByIdAndUpdate` can be used to update the document in the database. Try/catch is used here to send back an error if something goes wrong when updating the user. This would include the new data not passing the validation
+defined for the model.
+
+
+```javascript
+try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new:
+    true, runValidators: true })
+    if (!user) {
+    return res.status(404).send()
+}
+    res.send(user)
+    } 
+    catch (e) {
+    res.status(400).send(e)
+}
+```
+
+### Resource Deleting Endpoints
+
+Resource deleting endpoints use the DELETE HTTP method. The URL structure is
+`/resources/:id` for deleting an individual resource by its ID. If you want to delete an
+individual task with the ID of 897, it would be `DELETE /tasks/897`.
+
+`app.delete` is used to set up the Express route handler.
+
+```javascript
+app.delete('/users/:id', async (req, res) => {
+// Route handler
+})
+```
+
+The handler itself can delete the resource using findByIdAndDelete.
+
+```javascript
+try {
+    const user = await User.findByIdAndDelete(req.params.id)
+    if (!user) {
+    return res.status(404).send()
+}
+    res.send(user)
+} catch (e) {
+    res.status(500).send()
+}
+```
+
+### Creating Separate Routers
+
+Express allows you to create as many routers as you want. These separate routers can
+then be combined into a single Express application. You can create a new router using
+`express.Router` as shown below. The example file below creates the router, adds routes,
+and exports the router from the file.
+
+```javascript
+const router = new express.Router()
+    router.post('/someEndpoint', (req, res) => {
+    // Do something
+})
+
+module.exports = router
+```
+
+The router defined in the file above can be added into the Express application in
+`index.js`. This is done by loading the router in with `require` and then passing the router
+Version 1.0 78 to app.use. You can set up as many routers as you need for your application, though it’s common to have a router for each distinct resource your REST API has.
+
+```javascript
+// Register with existing application
+app.use(router)
+```

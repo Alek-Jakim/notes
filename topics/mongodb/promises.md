@@ -54,3 +54,19 @@ Task.findByIdAndDelete('5f3b7df885346d0ce073df7e')
 
 ### Async/Await
 
+```javascript
+const doWork = async () => {
+    const sum = await add(1, 99)
+    const sum2 = await add(sum, 50)
+    const sum3 = await add(sum2, 3)
+    return sum3
+}
+doWork().then((result) => {
+    console.log('result', result)
+}).catch((e) => {
+    console.log('e', e)
+})
+```
+
+It’s important to note that async and await are syntax enhancements for working with
+promises. Promises are still at the core of asynchronous code that uses async and await.
