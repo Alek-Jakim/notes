@@ -1,5 +1,7 @@
 ## Basics
-* [Arrays](arr.md)
+* [Functions](./js/functions.md)
+
+* [Arrays](./js/arr.md)
 
 * [DOM](dom.md)
 
