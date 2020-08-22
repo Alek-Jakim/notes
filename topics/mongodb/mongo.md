@@ -201,3 +201,5 @@ console.log(error)
 [REST API](./rest-api.md)
 
 [Promises](./promises.md)
+
+[API Authentication & Security](./api-security.md)
