@@ -277,4 +277,6 @@ c.draw(); // Circle with radius 10
 
 ### [Node.js Course](./node/nodejs.md)
 
+### [Node.js Rest APIs with Express & MySQL](./node/restapi.md)
+
 
