@@ -10,4 +10,4 @@
 * [Regular Expressins](./js/regular_expressions.md)
 
 -----
-[JavaScript Exercises](./challenges/js-challenges.md)
+[JavaScript Exercises](./js/challenges/js-challenges.md)
