@@ -139,3 +139,35 @@ const getCurrDate = () => {
 ```javascript
 const novelString = str => str.toLowerCase().includes('new') ? str : 'new ' + str;
 ```
+
+
+12. Use Recursion to Create a Countdown
+
+```javascript
+function countdown(n){
+  if(n < 1) {
+    return [];
+  } else {
+    let countArr = countdown(n - 1)
+    countArr.push(n)
+    countArr.sort((a, b) => {
+      return b - a
+    })
+    return countArr
+  }
+}
+```
+
+13. Use Recursion to Create a Range of Numbers
+
+```javascript
+function rangeOfNumbers(startNum, endNum) {
+  if(endNum - startNum === 0){
+    return [startNum];
+  } else {
+    let myArr = rangeOfNumbers(startNum, endNum - 1)
+    myArr.push(endNum)
+    return myArr
+  }
+};
+```

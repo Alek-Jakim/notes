@@ -7,5 +7,7 @@
 
 * [Objects](./objects/object.md)
 
+* [Regular Expressins](./js/regular_expressions.md)
+
 -----
 [JavaScript Exercises](./challenges/js-challenges.md)
