@@ -9,5 +9,7 @@
 
 * [Regular Expressins](./js/regular_expressions.md)
 
+* [Local Storage](./js/local-storage.md)
+
 -----
 [JavaScript Exercises](./js/challenges/js-challenges.md)
