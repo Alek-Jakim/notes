@@ -16,17 +16,9 @@ const element = <h1>Hello, world</h1>;
 const element = <h1>Hello, world</h1>;
 ```
 
-This syntax is called JSX, and it is a syntax extension to JavaScript. We use it to describe what the UI should look like. JSX comes with the full power of JavaScript.
+This syntax is called JSX, and it is a syntax extension to JavaScript. We use it to describe what the UI should look like. JSX comes with the full power of JavaScript. JSX produces React “elements”. 
 
-JSX produces React “elements”. 
-
-React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.
-
-Instead of artificially separating technologies by putting markup and logic in separate files, React separates concerns with loosely coupled units called “components” that contain both. 
-
-React doesn’t require using JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
-
-After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.
+React separates concerns with loosely coupled units called “components” that contain both. 
 
 This means that you can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions:
 
@@ -48,17 +40,10 @@ function Welcome(props) {
 }
 ```
 
-This function is a valid React component because it accepts a single “props” (which stands for properties) object argument with data and returns a React element. We call such components “function components” because they are literally JavaScript functions.
 
-You can also use an ES6 class to define a component:
 
-```javascript
-class Welcome extends React.Component {
-  render() {
-    return <h1>Hello, {this.props.name}</h1>;
-  }
-}
-```
+### [Props and State](./react-course/props-state.md)
 
 ### [React Course](./react-course/course.md)
+
 ### [React Main](./react-course/react-master/react-main.md)
