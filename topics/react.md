@@ -45,6 +45,8 @@ function Welcome(props) {
 ### [Props and State](./react-course/props-state.md)
 
 ### [React Router](./react-course/router.md)
+
+### [React Hooks](./react-course/hooks.md)
 ---
 ## CC
 
