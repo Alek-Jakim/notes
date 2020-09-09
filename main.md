@@ -2,6 +2,7 @@
 
 ## [Javascript](./topics/javascript.md)
 
+## [SQL](./topics/sql.md)
 
 ## [MySQL](./topics/mysql.md)
 

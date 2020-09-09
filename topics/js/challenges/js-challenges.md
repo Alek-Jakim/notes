@@ -171,3 +171,66 @@ function rangeOfNumbers(startNum, endNum) {
   }
 };
 ```
+14. Factorialize a number
+
+```javascript
+const factorialize = (num) => num === 0 ? 1 : num * factorialize(num - 1);
+//The factorial of a positive integer n, denoted by n!, is the product of all positive integers less than or equal to n
+
+//for example 5! = 1 * 2 * 3 * 4 * 5 = 120
+```
+
+15. Return Largest Numbers in Arrays
+
+* Create a variable to store the results as an array.
+* Create an outer loop to iterate through the outer array.
+* Create a second variable to hold the largest number and initialise it with the first number. This must be outside an inner loop so it won’t be reassigned until we find a larger number.
+* Create said inner loop to work with the sub-arrays.
+* Check if the element of the sub array is larger than the currently stored largest number. If so, then update the number in the variable.
+* After the inner loop, save the largest number in the corresponding position inside of the results array.
+* And finally return said array.
+
+```javascript
+function largestOfFour(arr) {
+  let results = [];
+  for(let i = 0; i <arr.length; i++){
+    let largestNum = arr[i][0]
+    for(let y = 1; y < arr[i].length; y++) {
+      if(arr[i][y] > largestNum){
+        largestNum = arr[i][y]
+      }
+    }
+    results[i] = largestNum
+  }
+  return results;
+}
+```
+
+16. Check if a string (first argument, str) ends with the given target string (second argument, target).
+
+First we use the slice method copy the string.
+In order to get the last characters in str equivalent to the target's length we use the slice method.
+The first parameter inside the slice method is the starting index and the second parameter would be the ending index.
+For example str.slice(10, 17) would return give me.
+In this case we only include one parameter which it will copy everything from the starting index.
+We substract the length of str and the length of target, that way, we shall get the last remaining characters equivalent to the target's length.
+Finally we compare the return result of slice to target and check if they have the same characters.
+
+```javascript
+const confirmEnding = (str, ending) => str.slice(str.length - ending.length) === ending
+```
+
+17. Repeat a string
+
+```javascript
+function repeatStringNumTimes(str, num) {
+  if(num <= 0){
+    return ''
+  }
+  let newStr = str
+  for(let i = 1; i < num; i++) {
+    newStr =str + newStr
+  }
+  return newStr;
+}
+```

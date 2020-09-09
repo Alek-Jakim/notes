@@ -9,6 +9,8 @@
 
 * [Regular Expressins](./js/regular_expressions.md)
 
+* [Useful Stuff](./js/useful.md)
+
 * [Local Storage](./js/local-storage.md)
 
 -----
