@@ -234,3 +234,22 @@ function repeatStringNumTimes(str, num) {
   return newStr;
 }
 ```
+
+18. Truncate a string if it is longer than the given maximum string length
+
+```javascript
+const truncateString = (str, num) => str.length > num ? str.slice(0, num) + '...' : str;
+```
+
+19. Create a function that looks through an array arr and returns the first element in it that passes a 'truth test'. This means that given an element x, the 'truth test' is passed if func(x) is true. If no element passes the test, return undefined.
+
+```javascript
+const findElement = (arr, func) => arr.find(func)
+```
+
+
+20. Check if a value is classified as a boolean primitive. Return true or false.
+
+```javascript
+const booWho = (bool) => typeof bool === 'boolean' ? true : false
+```
