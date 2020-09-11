@@ -13,5 +13,9 @@
 
 * [Local Storage](./js/local-storage.md)
 
+* [Recursion](./js/recursion.md)
+
+* [Undefined vs Null](./js/undef-null.md)
+
 -----
 [JavaScript Exercises](./js/challenges/js-challenges.md)
