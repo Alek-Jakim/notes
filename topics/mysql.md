@@ -2,6 +2,8 @@
 
 --------------
 
+[MySQL Cheat Sheet](./mysql/cheat-sheet.md)
+
 ## Topics
 
 * [String Functions](./mysql/string-functions.md)
