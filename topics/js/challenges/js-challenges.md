@@ -253,3 +253,64 @@ const findElement = (arr, func) => arr.find(func)
 ```javascript
 const booWho = (bool) => typeof bool === 'boolean' ? true : false
 ```
+
+21. Write your own Map function
+
+```javascript
+let s = [20, 40, 60, 80, 100];
+
+Array.prototype.myMap = function(callback) {
+  let newArray = [];
+  this.forEach(item => newArray.push(callback(item)));
+  // for(let i = 0; i < this.length; i++) {
+  //   newArray.push(callback[this[i]]);
+  // }  -- same result with a for loop
+  return newArray;
+}
+
+//Using Recursion
+Array.prototype.myMap = function(callback, arr = [], i = 0) {
+  return i < this.length
+    ? this.myMap(callback, arr.concat(callback(this[i])), i + 1)
+    : arr;
+};
+
+let newS = s.myMap((item) => item * 2)
+//console.log(newS) --> [ 40, 80, 120, 160, 200 ]
+```
+
+22. Write your own Filter function
+
+```javascript
+Array.prototype.myFilter = function(callback){
+  var newArray = [];
+  this.forEach((x) => {
+    if(callback(x)) {
+      newArray.push(x)
+    }
+  })
+  return newArray;
+
+};
+```
+
+23. Create a chessboard with loops
+
+```javascript
+let size = 16
+
+let str = ''
+
+for(let i = 0; i < 8; i++) {
+  for(y = 0; y < size; y++) {
+    if((i + y) % 2 === 0) {
+      str += ' '
+    } else{
+      str += '#'
+    }
+  }
+  str += '\n'
+}
+
+console.log(str)
+```
