@@ -2,8 +2,6 @@
 
 ## [Javascript](./topics/javascript.md)
 
-## [SQL](./topics/sql.md)
-
 ## [MySQL](./topics/mysql.md)
 
 ## [Node](./topics/node.md)
@@ -22,6 +20,8 @@
 ## [Babel](./topics/babel/babel.md)
 
 ## [Webpack](./topics/webpack/webpack.md)
+
+## [EJS](./topics/templating/ejs.md)
 ---
 # Architecture
 
