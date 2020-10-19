@@ -16,6 +16,8 @@
 
 * [Logical Operators](./mysql/logical-operators.md)
 
+* [One To Many](./mysql/one-tomany.md)
+
 ### **Best Practices**
 
 #### Naming Convention
