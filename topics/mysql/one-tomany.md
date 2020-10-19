@@ -31,7 +31,7 @@ When selecting data from multiple tables with relationships, we will be using th
 * Right(Outer) Joins
 
 ---
-Implicit Inner Join
+1. Implicit Inner Join
 ```bash
 SELECT * FROM customers, orders 
 WHERE customers.id = orders.customer_id;
@@ -39,4 +39,17 @@ WHERE customers.id = orders.customer_id;
 SELECT first_name, last_name, order_date, amount
 FROM customers, orders 
     WHERE customers.id = orders.customer_id;
+```
+
+2. Explicit Inner Joins
+
+```bash
+SELECT * FROM customers
+JOIN orders
+    ON customers.id = orders.customer_id;
+
+SELECT first_name, last_name, order_date, amount 
+FROM customers
+JOIN orders
+    ON customers.id = orders.customer_id;
 ```
