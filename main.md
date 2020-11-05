@@ -2,6 +2,8 @@
 
 ## [Javascript](./topics/javascript.md)
 
+## [Python](./topics/python/python.md)
+
 ## [MySQL](./topics/mysql.md)
 
 ## [Node](./topics/node.md)
