@@ -16,3 +16,7 @@ Python is an interpreted language, which can save you considerable time during p
 ### [Python Basics](./basics.md)
 
 ### [Flow Control](./flow-control.md)
+
+### [Functions](./funcs.md);
+
+### [Lists](./lists.md)
