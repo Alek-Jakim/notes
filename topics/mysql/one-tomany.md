@@ -32,6 +32,13 @@ When selecting data from multiple tables with relationships, we will be using th
 
 ---
 1. Implicit Inner Join
+
+* Inner join returns the rows that match in both tables
+
+
+
+![](./sql-img/innerjoin.png)
+
 ```bash
 SELECT * FROM customers, orders 
 WHERE customers.id = orders.customer_id;
@@ -53,3 +60,70 @@ FROM customers
 JOIN orders
     ON customers.id = orders.customer_id;
 ```
+
+
+3. Cross Joins
+
+```bash
+# 2 step process
+SELECT id FROM customers WHERE last_name='George';
+SELECT * FROM orders WHERE customer_id = 1;
+
+#Using a subquery
+SELECT * FROM orders WHERE customer_id =
+    (
+        SELECT id FROM customers
+        WHERE last_name='George'
+    );
+```
+
+4. Left Joins (use this one the most probably)
+
+* Left join returns all rows from the left table
+
+![](./sql-img/leftjoin.png)
+
+```bash
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+
+
+
+SELECT * FROM customers
+LEFT JOIN orders
+    ON customers.id = orders.customer_id;
+
+
+SELECT first_name, last_name, order_date, amount
+FROM customers
+LEFT JOIN orders
+    ON customers.id = orders.customer_id; 
+
+
+SELECT 
+    first_name, 
+    last_name,
+    IFNULL(SUM(amount), 0) AS total_spent
+FROM customers
+LEFT JOIN orders
+    ON customers.id = orders.customer_id
+GROUP BY customers.id
+ORDER BY total_spent;
+
+```
+
+
+5. Right Joins
+
+* The RIGHT JOIN keyword returns all records from the right table (table2), and the matched records from the left table (table1). The result is NULL from the left side, when there is no match.
+
+![](./sql-img/rightjoin.png)
+
+```bash
+SELECT * FROM customers
+RIGHT JOIN orders
+    ON customers.id = orders.customer_id;
+```
+
