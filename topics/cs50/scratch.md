@@ -30,3 +30,20 @@ For example:
 
 And so on...in the end, we add up the numbers above the 1s, in the example above, we add 32 + 16 + 2 = 50.
 
+* **Converting decimal to binary:**  
+1. Divide the number by 2.
+2. Get the integer quotient for the next iteration.
+3. Get the remainder for the binary digit.
+4. Repeat the steps until the quotient is equal to 0.
+
+![](./convert-bin.png)
+
+Let's take the number 60, for example:  
+60 / 2 = 30 --> the quotient is 30, remainder 0  
+30 / 2 = 15 --> the quotient is 15, remainder 0  
+15 / 2 = 7 --> the quotient is 7, remainder 1  
+7 / 2 = 3 --> the quotient is 3, remainder 1   
+3 / 2 = 1 --> the quotient is 1, remainder 1  
+1 / 2 = 0 --> the quotient is now 0, remainder 1
+
+So the number 60 converted to binary is 11100
