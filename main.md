@@ -2,6 +2,8 @@
 
 ## [Javascript](./topics/javascript.md)
 
+## [Data Structurs & Algorithms](./topics/algos/algo.md)
+
 ## [Python](./topics/python/python.md)
 
 ## [MySQL](./topics/mysql.md)
@@ -44,5 +46,7 @@
 
 * [file permissions](./topics/linux/file-permissions.md)
 
+---
+## [CS50x 2021](./topics/cs50/overview.md)
 ---
 [Web Servers](./topics/web-server/server.md)
