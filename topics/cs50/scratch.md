@@ -23,7 +23,8 @@ In binary, with just two digits, we have powers of two for each place value:
 2<sup>2</sup> 2<sup>1</sup> 2<sup>0</sup>
 
 For example:  
-![](./bin-ex.png)
+![](./bin-ex.png) 
+   
 2<sup>0</sup> = 1  
 2<sup>1</sup> = 2  
 2<sup>2</sup> = 4  
@@ -46,7 +47,7 @@ Let's take the number 60, for example:
 3 / 2 = 1 --> the quotient is 1, remainder 1  
 1 / 2 = 0 --> the quotient is now 0, remainder 1
 
-So the number 60 converted to binary is 11100
+So the number 60 converted to binary is 11100.
 
 ---
 ### Text
@@ -64,6 +65,6 @@ So the number 60 converted to binary is 11100
 
 * When we receive an emoji, our computer is actually just receiving a number in binary that it then maps to the image of the emoji based on the Unicode standard.
 
-*For example, the “face with tears of joy” emoji is just the bits `000000011111011000000010`:
+For example, the “face with tears of joy” emoji is just the bits `000000011111011000000010`:
 
 ![](./emoji.png)
