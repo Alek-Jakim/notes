@@ -327,3 +327,68 @@ console.log(unique);
 // [ 'Alek', 'John', 'Barry', 'CrayCray' ]
 
 ```
+
+25. Copy an array n times
+
+```javascript
+function copyMachine(arr, num) {
+  let newArr = [];
+  while (num >= 1) {
+    let arrItem = [...arr]
+    newArr.push(arrItem)
+    num--;
+  }
+  return newArr;
+}
+console.log(copyMachine([true, false, true], 2));
+```
+
+26. Longest word in a string
+
+```javascript
+function findLongestWordLength(str) {
+
+  let longestWord = ''
+  str = str.split(' ')
+  str.forEach(item => {
+    longestWord = item;
+    for(let i = 0; i < str.length; i++) {
+      if(str[i].length > longestWord.length) {
+        longestWord = str[i]
+      }
+    }
+  })
+
+  return longestWord.length;
+}
+```
+
+27. Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+
+```javascript
+function getIndexToIns(arr, num) {
+  arr.push(num)
+  arr.sort((a, b) => a < b ? -1 : 1)
+
+  return arr.indexOf(num);
+}
+console.log(getIndexToIns([40, 60], 50))
+// returns 1
+```
+
+28. Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+
+```javascript
+function mutation(arr) {
+  let firstWord = arr[1].toLowerCase()
+  let target = arr[0].toLowerCase()
+
+  for(let i = 0; i < firstWord.length; i++) {
+    if(target.indexOf(firstWord[i]) < 0) return false
+  }
+
+  return true;
+}
+
+mutation(["hello", "hey"]);
+```

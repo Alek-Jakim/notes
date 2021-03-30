@@ -19,5 +19,3 @@
 
 -----
 [JavaScript Exercises](./js/challenges/js-challenges.md)
-
-[Data Structures & Alghorithms](./js/data-structures.md)

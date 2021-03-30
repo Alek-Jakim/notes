@@ -47,6 +47,6 @@
 * [file permissions](./topics/linux/file-permissions.md)
 
 ---
-## [CS50x 2021](./topics/cs50/overview.md)
+## [Computer Science](./topics/cs50/overview.md)
 ---
 [Web Servers](./topics/web-server/server.md)

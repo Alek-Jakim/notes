@@ -68,3 +68,39 @@ So the number 60 converted to binary is 11100.
 For example, the “face with tears of joy” emoji is just the bits `000000011111011000000010`:
 
 ![](./emoji.png)
+
+---
+### Images, video, sounds
+
+* An image, like the picture of the emoji, are made up of colors.
+
+* **RGB** - With only bits, we can map numbers to colors as well. There are many different systems to represent colors, but a common one is RGB, which represents different colors by indicating the amount of red, green, and blue within each color.
+
+* For example, our pattern of bits earlier, 72, 73, and 33 might indicate the amount of red, green, and blue in a color. (And our programs would know those bits map to a color if we opened an image file, as opposed to receiving them in a text message.)
+
+* Each number might be a byte, with 256 possible values, so with three bytes, we can represent millions of colors.
+
+* The dots, or squares, on our screens are called **pixels**, and images are made up of many thousands or millions of those pixels as well. So by using three bytes to represent the color for each pixel, we can create images.
+
+* The resolution of an image is the number of pixels there are, horizontally and vertically, so a high-resolution image will have more pixels and require more bytes to be stored.
+
+* Videos are made up of many images, changing multiple times a second to give us the appearance of motion, as an old-fashioned flipbook might do.
+
+* Music can be represented with bits, too, with mappings of numbers to notes and durations, or more complex mappings of bits to sound frequencies at each moment of time.
+
+* File formats, like JPEG and PNG, or Word or Excel documents, are also based on some standard that some humans have agreed on, for representing information with bits.
+
+---
+### Algorithms
+
+* **Algorithm** -  a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of problems or to perform a computation. It's basically a series of  step-by-step instructions for solving problems.
+
+In fact, we can represent the efficiency of each of those algorithms with a chart:
+
+![](./algo.png)
+
+1. Our first solution, searching one page at a time, can be represented by the red line: our time to solve increases linearly as the size of the problem increases. n is a some number representing the size of the problem, so with n pages in our phone books, we have to take up to n steps to find a name.
+
+2. The second solution, searching two pages at a time, can be represented by the yellow line: our slope is less steep, but still linear. Now, we only need (roughly) n / 2 steps, since we flip two pages at a time.
+
+3. If the phone book went from 1000 to 2000 pages, we would only need one more step to find our name. If the size doubled again from 2000 to 4000 pages, we would still only need one more step. The green line is labeled log2 n, or log base 2 of n, since we’re dividing the problem by two with each step.
