@@ -4,7 +4,7 @@
 
 ## [Data Structurs & Algorithms](./topics/algos/algo.md)
 
-## [Python](./topics/python/python.md)
+## [PostgreSQL](./topics/postgres/postgres.md)
 
 ## [MySQL](./topics/mysql.md)
 
