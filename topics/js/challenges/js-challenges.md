@@ -392,3 +392,79 @@ function mutation(arr) {
 
 mutation(["hello", "hey"]);
 ```
+
+29. Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+
+
+```javascript
+function chunkArrayInGroups(arr, size) {
+  let arrayLength = arr.length;
+  let brandNewShinyArr = [];
+
+  for(let i = 0; i < arrayLength;i += size) {
+    let chunk = arr.slice(i, i + size)
+
+    brandNewShinyArr.push(chunk)
+  }
+
+  return brandNewShinyArr;
+}
+
+console.log(chunkArrayInGroups(['a', 'b', 'c', 'd']), 2)
+//Output: [["a", "b"], ["c", "d"]]
+```
+
+30. Make a squareList function using any combination of map(), filter(), and reduce() so that it returns a new array containing only the square of only the positive integers (decimal numbers are not integers) when an array of real numbers is passed to it.
+
+```javascript
+const squareList = arr => {
+
+  let newArr = arr.slice().filter(num =>  num > 0 && num - Math.floor(num) === 0).map(num => num * num)
+  return newArr;
+
+};
+
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squareList([-3, 4.8, 5, 3, -3.2]));
+```
+
+31. Use the `join` method (among others) inside the sentensify function to make a sentence from the words in the string `str`. The function should return a string. For example, `I-like-Star-Wars` would be converted to `I like Star Wars`. For this challenge, do not use the replace method.
+
+
+```javascript
+function sentensify(str) {
+
+  let godForbiddenSymbols = ['-', '.', ','];
+  godForbiddenSymbols.forEach(godForbiddenSymbol => {
+    if(str.indexOf(godForbiddenSymbol) !== -1) {
+      str = str.split(godForbiddenSymbol).join(' ')
+    }
+  })
+  return str;
+
+}
+
+console.log(sentensify("May-the-force-be-with-you"))
+sentensify("May-the-force-be-with-you");
+```
+
+32. Fill in the urlSlug function so it converts a string title and returns the hyphenated version for the URL. You can use any of the methods covered in this section, and don't use replace. Here are the requirements:
+
+* The input is a string with spaces and title-cased words
+
+* The output is a string with the spaces between words replaced by a hyphen (-)
+
+* The output should be all lower-cased letters
+
+* The output should not have any spaces
+
+```javascript
+function urlSlug(title) {
+  let str = title
+  str = str.split(' ').filter(string => string.trim()).join('-').toLowerCase()
+  console.log(str)
+  return str
+}
+console.log(urlSlug(" Winter Is  Coming"))
+console.log(urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone"))
+```

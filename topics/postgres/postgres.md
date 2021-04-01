@@ -44,3 +44,56 @@ As is typical of client/server applications, the client and the server can be on
 
 The PostgreSQL server can handle multiple concurrent connections from clients. To achieve this it starts (“forks”) a new process for each connection. From that point on, the client and the new server process communicate without intervention by the original postgres process. Thus, the master server process is always running, waiting for client connections, whereas client and associated server processes come and go. (All of this is of course invisible to the user.)
 
+---
+## Creating a database
+
+### How To Install and Use PostgreSQL on Ubuntu
+
+
+```bash
+$ sudo apt update  
+
+$ sudo apt install postgresql postgresql-contrib
+```
+### Switching Over to the postgres Account
+
+```bash
+sudo -u postgres psql -p 5432 -h 127.0.0.1
+```
+
+### Use a specific database
+
+```sql
+
+/*
+-h is for Host
+-p is for port and 5432 is the default one
+-u is for User
+Then you enter your password for the specified user
+test - the name of my db
+*/
+
+psql -h localhost -p 5432 -U postgres test
+```
+
+### Exit the database
+
+```sql
+\q
+```
+
+
+### List all databases:
+
+```sql
+$\l
+```
+
+### Switch between databases
+
+```sql
+\c dbname
+```
+---
+
+[Basic Commands](./basic.md)
