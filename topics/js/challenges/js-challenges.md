@@ -468,3 +468,35 @@ function urlSlug(title) {
 console.log(urlSlug(" Winter Is  Coming"))
 console.log(urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone"))
 ```
+
+33. Roman Numeral Converter - Convert the given number into a roman numeral.
+
+```javascript
+const convertToRomanNumeral = (num) => {
+    const romanSymbols = {
+        M: 1000,
+        CM: 900,
+        D: 500,
+        CD: 400,
+        C: 100,
+        XC: 90,
+        L: 50,
+        XL: 40,
+        X: 10,
+        IX: 9,
+        V: 5,
+        IV: 4,
+        I: 1
+    };
+    let result = '';
+    for (let i in romanSymbols) {
+        console.log(num, i)
+        while (num >= romanSymbols[i]) {
+            result += i;
+            num -= romanSymbols[i]
+        }
+    }
+
+    return result;
+}
+```
