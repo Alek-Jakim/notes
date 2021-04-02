@@ -198,3 +198,121 @@ let result = text.match(myRegex);
 
 console.log(result) // <h1>
 ```
+---
+
+### Match Beginning String Patterns
+
+You can use the `^` caret character to search for patterns at the beginning of strings.
+
+```javascript
+let rickyAndCal = "Cal and Ricky both like racing.";
+let calRegex = /^Cal/; 
+let result = calRegex.test(rickyAndCal); // true
+```
+
+---
+
+### Match Ending String Patterns
+
+You can search the end of strings using the dollar sign character `$` at the end of the regex.
+
+```javascript
+let caboose = "The last car on a train is the caboose";
+let lastRegex = /caboose$/; // Change this line
+let result = lastRegex.test(caboose);
+```
+
+---
+
+### Match All Letters and Numbers
+
+The closest character class in JavaScript to match the alphabet is `\w`. This shortcut is equal to `[A-Za-z0-9_]`. This character class matches upper and lowercase letters plus numbers. Note, this character class also includes the underscore character (`_`).
+
+```javascript
+let quoteSample = "The five boxing wizards jump quickly.";
+let alphabetRegexV2 = /\w/g; 
+let result = quoteSample.match(alphabetRegexV2).length;
+```
+---
+
+### Match Everything But Letters and Numbers
+
+You've learned that you can use a shortcut to match alphanumerics `[A-Za-z0-9_]` using `\w`. A natural pattern one might want to search for is the opposite of alphanumerics.
+
+You can search for the opposite of the \w with `\W`. Note, the opposite pattern uses a capital letter. This shortcut is the same as `[^A-Za-z0-9_]`.
+
+```javascript
+let quoteSample = "The five boxing wizards jump quickly.";
+let nonAlphabetRegex = /\W/g;
+let result = quoteSample.match(nonAlphabetRegex).length;
+```
+
+---
+
+### Match All Numbers
+
+The shortcut to look for digit characters is \d, with a lowercase d. This is equal to the character class [0-9], which looks for a single character of any number between zero and nine.
+
+
+```javascript
+let movieName = "2001: A Space Odyssey";
+let numRegex = /\d/g; 
+let result = movieName.match(numRegex).length;
+```
+
+---
+
+### Match All Non-Numbers
+
+You can also search for non-digits using a similar shortcut that uses an uppercase D instead. The shortcut to look for non-digit characters is `\D`. This is equal to the character class `[^0-9]`, which looks for a single character that is not a number between zero and nine.
+
+```javascript
+let movieName = "2001: A Space Odyssey";
+let noNumRegex = /\D/g; 
+let result = movieName.match(noNumRegex).length;
+```
+
+---
+
+### Restrict Possible Usernames
+
+You need to check all the usernames in a database. Here are some simple rules that users have to follow when creating their username: 
+
+* Usernames can only use alpha-numeric characters.
+
+* The only numbers in the username have to be at the end. There can be zero or more of them at the end. Username cannot start with the number.
+
+* Username letters can be lowercase and uppercase.
+
+* Usernames have to be at least two characters long. A two-character username can only use alphabet letters as characters.
+
+```javascript
+//Solution
+let username = "JackOfAllTrades";
+let userCheck = /^[a-z][a-z]+\d*$|^[a-z]\d\d+$/i; 
+let result = userCheck.test(username);
+```
+---
+
+### Match Whitespace
+
+You can search for whitespace using `\s`, which is a lowercase s. This pattern not only matches whitespace, but also carriage return, tab, form feed, and new line characters. You can think of it as similar to the character class `[ \r\t\f\n\v]`.
+
+```javascript
+let sample = "Whitespace is important in separating words";
+let countWhiteSpace = /\s/g; 
+let result = sample.match(countWhiteSpace);
+```
+---
+
+### Match Non-Whitespace Characters
+
+Search for non-whitespace using `\S`, which is an uppercase s. This pattern will not match whitespace, carriage return, tab, form feed, and new line characters. You can think of it being similar to the character class `[^ \r\t\f\n\v]`.
+
+```javascript
+let sample = "Whitespace is important in separating words";
+let countNonWhiteSpace = /\S/g; 
+let result = sample.match(countNonWhiteSpace);
+```
+
+
