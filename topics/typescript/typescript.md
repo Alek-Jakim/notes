@@ -312,3 +312,76 @@ const greet = (user: objWithName) => {
     console.log(`${user.name} says hello`)
 }
 ```
+
+---
+
+### Function Signatures
+
+```javascript
+let greet: (a: string, b: string) => void;
+
+//this has to match the signature above, name & greeting have to be strings as declared above
+greet = (name: string, greeting: string) => {
+    return `${greeting}, ${name}!`
+}
+
+//Here's another example
+let calc: (a: number, b: number, c: string) => number;
+
+calc = (num1: number, num2: number, action: string) => {
+    switch (action) {
+        case "add":
+            return num1 + num2;
+        case "subtract":
+            return num1 - num2;
+        case "multiply":
+            return num1 * num2;
+        case "divide":
+            return num1 / num2;
+        default:
+            return 1;
+    }
+}
+```
+
+
+### The DOM & Type Casting
+
+```javascript
+const anchor = document.querySelector("a");
+
+//If you try this, it will give you an error
+console.log(anchor.hrer); 
+
+//So you add an ! mark at the end of the query selector, like so:
+const anchor = document.querySelector("a")!;
+
+// OR
+console.log(anchor?.hrer); 
+```
+
+```javascript
+//If you do this, it will show that form is of type Element, since you're grabbing it by the class name
+const form = document.querySelector('.new-item-form');
+
+//So what we can do is this
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+const type = document.querySelector("#type") as HTMLSelectElement;
+const toFrom = document.querySelector("#toFrom") as HTMLInputElement;
+```
+
+```javascript
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+
+//event objects take Event as a type
+form.addEventListener("submit" ,(e: Event) => {
+    e.preventDefault();
+    console.log(
+        type.value,
+        toFrom.value,
+        details.value,
+        //amount.value will give us a number, but JS turns it into a string, so you can do this
+        amount.valueAsNumber
+    )
+})
+```
