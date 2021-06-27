@@ -18,6 +18,8 @@
 
 ## [jQuery](./topics/jquery.md)
 
+## [Sass](./topics/sass.md)
+
 ---
 ## Tooling
 
