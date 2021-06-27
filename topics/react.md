@@ -50,9 +50,7 @@ function Welcome(props) {
 
 ### [React Redux](./react-course/redux.md)
 ---
-## CC
+## NN
 
-### [React Course](./react-course/course.md)
 
-### [React Main](./react-course/react-master/react-main.md)
 

@@ -1,5 +1,7 @@
 ## TypeScript 
 
+### [TypeScript with React](./r-type.md)
+
 TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. It offers classes, modules, and interfaces to help you build robust components.
 
 * Alternative to JavaScript (superset - which basically means that it extends the abilities of JavaScript)

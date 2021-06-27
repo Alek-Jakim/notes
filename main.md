@@ -16,6 +16,8 @@
 
 ## [MongoDB](./topics/mongodb/mongo.md)
 
+## [jQuery](./topics/jquery.md)
+
 ---
 ## Tooling
 
