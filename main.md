@@ -14,6 +14,8 @@
 
 ## [React](./topics/react.md)
 
+## [Redux](./topics/redux.md)
+
 ## [MongoDB](./topics/mongodb/mongo.md)
 
 ## [jQuery](./topics/jquery.md)
