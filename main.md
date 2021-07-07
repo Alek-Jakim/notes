@@ -16,6 +16,8 @@
 
 ## [Redux](./topics/redux.md)
 
+## [Vue](./topics/vue/vue.md)
+
 ## [MongoDB](./topics/mongodb/mongo.md)
 
 ## [jQuery](./topics/jquery.md)
