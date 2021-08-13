@@ -2,7 +2,7 @@
 
 ## [Javascript](./topics/javascript.md)
 
-## [Data Structurs & Algorithms](./topics/algos/algo.md)
+## [Data Structures & Algorithms](./topics/algos/algo.md)
 
 ## [TypeScript](./topics/typescript/typescript.md)
 
@@ -21,6 +21,8 @@
 ## [MongoDB](./topics/mongodb/mongo.md)
 
 ## [jQuery](./topics/jquery.md)
+
+## [Python](./topics/python/python.md)
 
 ## [Sass](./topics/sass.md)
 
@@ -42,6 +44,7 @@
 ## [MVC](./topics/architecture/mvc.md)
 
 ---
+
 # Linux
 
 * [basics](./topics/linux/basics.md)
