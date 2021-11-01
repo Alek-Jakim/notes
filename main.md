@@ -4,25 +4,23 @@
 
 ## [Data Structures & Algorithms](./topics/algos/algo.md)
 
+## [React](./topics/react.md)
+
 ## [TypeScript](./topics/typescript/typescript.md)
 
-## [MySQL](./topics/mysql.md)
+## [Redux](./topics/redux.md)
 
 ## [Node](./topics/node.md)
 
 ## [Express](./topics/express.md)
 
-## [React](./topics/react.md)
-
-## [Redux](./topics/redux.md)
-
-## [Vue](./topics/vue/vue.md)
+## [MySQL](./topics/mysql.md)
 
 ## [MongoDB](./topics/mongodb/mongo.md)
 
-## [jQuery](./topics/jquery.md)
+## [Vue](./topics/vue/vue.md)
 
-## [Python](./topics/python/python.md)
+## [jQuery](./topics/jquery.md)
 
 ## [Sass](./topics/sass.md)
 
