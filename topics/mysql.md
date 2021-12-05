@@ -97,15 +97,15 @@ sudo mysql -u root -p
 `;` - Execute/End current command.
 `ENTER` - Starts a new line. `;` is expected.
 
-
-
-
 # Syntax
 
 #### Starting CLI
 
 ```sql
 mysql-ctl cli
+
+-- IMPORTANT FOR UBUNTU
+ mysql -h 127.0.0.1 -P 3306 -u user -p
 ```
 ## Database: 
 ```sql
@@ -116,6 +116,30 @@ USE dbName;                 -- Select a database.
 CREATE DATABASE dbName;     -- Create a database.
 DROP DATABASE dbName;       -- Delete a database.
 ```
+---
+
+## Users
+
+```sql
+-- Create user
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+
+-- Give access to certain areas. In this case, it's for everything as *.* stands for dbName.tableName i.e. all of them.
+GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
+
+-- Reload the privileges.
+FLUSH PRIVILEGES;
+
+-- List all users.
+SELECT user FROM mysql.user;
+
+-- Show current user.
+SELECT CURRENT_USER();
+
+-- Delete user.
+DROP USER 'user'@'localhost';
+```
+
 
 ## Tables: 
 
@@ -156,6 +180,7 @@ INSERT INTO table_name (column_name, column_name)
 -- Show Warnings
 SHOW WARNINGS; 
 ```
+---
 
 ### Delete
 
