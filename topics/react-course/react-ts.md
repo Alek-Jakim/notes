@@ -1,3 +1,152 @@
+## TypeScript with React
+
+---
+
+### Basic Types
+
+```javascript
+  const name: string = "Alek";
+  const age: number = 28;
+  const isMarried: boolean = true;
+
+  const getName = (name: string):number =>  {
+    console.log(name);
+    return 5
+  }
+```
+
+### Functional Component
+```javascript
+const Person: FC = () => {
+    return (
+        <div>Person</div>
+    )
+}
+export default Person
+```
+
+### Props
+
+```javascript
+import React from 'react'
+
+interface Props {
+    email: string,
+    name: string,
+    age: number,
+    // question mark means it is optional
+    getName?: () => string
+
+}
+
+// This is how you can destructure the props
+const Person = ({ email, name, age }: Props) => {
+    return (
+        <div>
+            <div>
+                <p>Name: {name}</p>
+                <p>Age: {age}</p>
+                <p>Email: {email}</p>
+            </div>
+        </div>
+    )
+}
+
+export default Person
+```
+
+```javascript
+import React, { FC } from 'react'
+
+interface Props {
+    email: string,
+    name: string,
+}
+
+// This is how you can define props for a functional component
+const Person: FC<Props> = ({email, name}) => {
+    return (
+        <div>
+                {// code}
+        </div>
+    )
+}
+
+export default Person
+```
+
+### useState
+
+```javascript
+import React, { ChangeEvent, FC, useState } from 'react'
+
+    const [country, setCountry] = useState<string | null>(null)
+
+    <input type="text" placeholder="Write down your country..." onChange={(e: ChangeEvent<HTMLInputElement>) => setCountry(e.target.value)} /
+```
+
+### Enums/Types
+
+```javascript
+/*
+Enums should ideally be used in situations where there are distinct values that can be seen as constants, like seven days of the week
+*/
+
+
+enum HairColor {
+    Blonde = "Your hair is blonde, good for you",
+    Brown = "Cool hair color",
+    Pink = "Wow pink so crazy"
+}
+
+interface Person {
+    name: string,
+    age: number,
+    hairColor: HairColor
+}
+
+<p>{HairColor.Blonde}</p>
+```
+
+
+### Context API
+
+```javascript
+import React, { FC, createContext } from "react"
+
+interface AppContextInterface {
+  name: string;
+  age: number;
+  country: string;
+}
+
+const AppContext = createContext<AppContextInterface | null>(null);
+
+
+const App: FC = () => {
+
+  const contextValue: AppContextInterface = {
+    name: "Alek",
+    age: 20,
+    country: "Macedonia"
+  }
+
+  return (
+    <AppContext.Provider value={contextValue}>
+      <div>
+        <h1>Name: {contextValue.name}</h1>
+        <h1>Age: {contextValue.age}</h1>
+        <h1>Country: {contextValue.country}</h1>
+      </div>
+    </AppContext.Provider >
+  )
+}
+
+export default App
+```
+
+---
+
 ## Basic Prop Types Examples
 
 A list of TypeScript types you will likely use in a React+TypeScript app:
