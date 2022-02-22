@@ -109,6 +109,8 @@ interface Person {
 ```
 
 
+[Context API Snippet](./react-ts-context.md)
+
 ### Context API
 
 ```javascript
