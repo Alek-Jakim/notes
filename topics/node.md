@@ -1,282 +1,239 @@
-# Install
+# Node.js
 
-```bash
-sudo apt install nodejs -y
+Node.js is an open-source and cross-platform JavaScript runtime environment. It's a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications.
 
-# Check install
-node -v
-npm -v
-```
+Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
-# Import / Export
+## Features of Node.js
 
-- **CommonJS (CJS) format**. Used in Node.js and uses `require` and `module.exports` to define dependencies and modules. *The npm ecosystem is built upon this format*. `exports = module.exports`
+Important features of Node:
+
+* **Asynchronous and Event Driven** 
+
+* **Single Threaded but Highly Scalable**
+
+* **No Buffering**
+
+**NOTE:** buffer = a region of a memory used to temporarily store data while it is being moved from one place to another.
+
+**NOTE:** JS is synchronous BUT being run in the browser or terminal, it has asynchronous functionality thanks to Node.
+
+### libuv
+
+**libuv** is a multi-platform support library with a focus on asynchronous I/O. It was primarily developed for use by Node.js, but it's also used by Luvit, Julia, uvloop, and others.
+
+## Global Object
+
+In Node, we have a `global` object that we can always access. Features that we expect to be available everywhere live in this `global` object.
+
 
 ```javascript
-// lib.js
+// Probably the most famous global is global.console.log - we omit the global
 
-// Export the function
-function sayHello(){  
-  console.log('Hello');
+//global.setTimeout
+setTimeout(() => {
+console.log('hello');
+}, 5000);
+
+```
+
+
+## Module System
+
+In Node.js each file is treated as a separate module. Modules provide us a way of reusing existing code. Node.js uses the concept of a module as the fundamental means for structuring the code of a program. It is the building block for creating applications and reusable
+libraries.
+
+### The `require()` function
+
+```javascript
+// We can re-use existing code with require() - it imports code from another module
+const fs = require('fs');
+fs.readFileSync('hello.txt');
+// OR...
+const { readFileSync } = require('fs');
+readFileSync('hello.txt');
+```
+
+
+## Built-in Modules
+
+Key built-in modules include:
+
+* fs - read and write files on your file system
+
+* path - combine paths regardless of which OS you're using
+
+* process - information about the currently running process, e.g. process.argv for arguments passed in or process.env for environment variables
+
+* http - make requests and create HTTP servers
+
+* https - work with secure HTTP servers using SSL/TLS
+
+* events - work with the EventEmitter
+
+* crypto - cryptography tools like encryption and hashing
+
+
+## Creating Modules
+
+```javascript
+// In src/fileModule.js
+function read(filename) { }
+function write(filename, data) { }
+module.exports = {
+read,
+write,
+};
+// In src/sayHello.js
+const { write } = require('./fileModule.js')
+write('hello.txt', 'Hello world!');
+```
+
+Some Node modules may instead use the shorthand syntax to export functions.
+
+```javascript
+// In src/fileModule.js
+exports.read = function read(filename) { }
+exports.write = function write(filename, data) { }
+```
+
+## Event Loop
+
+Event Loop Features: 
+
+* The event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that JavaScript is single-threaded — by offloading operations to the system kernel whenever possible.
+
+* The event loop executes tasks from the event queue only when the call stack is empty i.e. there is no ongoing task.
+
+* The event loop allows us to use callbacks and promises.
+
+* The event loop executes the tasks starting from the oldest first.
+
+![](./node/node_event_loop.jpg)
+
+### Phases of the Event loop
+
+---
+![](./node/elphases.png)
+
+## Event Emitter
+
+Node.js provides a built-in module to work with events.
+
+```javascript
+const EventEmitter = require('events');
+const celebrity = new EventEmitter();
+celebrity.on('success', () => {
+console.log('Congratulations! You are the best!');
+});
+celebrity.emit('success'); // logs success message
+celebrity.emit('success'); // logs success message again
+celebrity.emit('failure'); // logs nothing
+```
+
+Many features of Node are modelled with the EventEmitter class. Some examples
+include the currently running Node `process` , a running HTTP server, and web sockets.
+They all emit events that can then be listened for using a listener function like `on()` .
+
+For example, we can listen for the exit event on the current running process. In this
+case, the event has a code associated with it to be more specific about how the process is exiting.
+
+```javascript
+const process = require('process');
+process.on('exit', (code) => {
+console.log(`About to exit with code: ${code}`);
+});
+```
+
+
+## Backend Concepts
+
+### Client-server architecture
+Your frontend is usually the client. Your backend is usually the server.
+In a client-server architecture, clients get access to data (or "resources") from the server. The client can then display and interact with this data. The client and server communicate with each other using the HTTP protocol.
+
+### API
+Short for Application Programming Interface. This is the set of functions or operations that your backend server supports. The frontend interacts with the backend by using only these operations. On the web, backend APIs are commonly defined by a list of URLs, corresponding HTTP methods, and any queries and parameters.
+
+### CRUD
+Short for Create Read Update and Delete. These are the basic operations that every API supports on collections of data. Your API will usually save (or "persist") these collections of data in a database.
+
+### RESTful
+RESTful APIs are those that follow certain constraints. These include:
+
+* Client-server architecture. Clients get access to resources from the server using the HTTP protocol.
+
+* Stateless communication. Each request contains all the information required by the server to handle that request. Every request is separate from every other request.
+
+* Cacheable. The stateless communication makes caching easier.
+
+In RESTful APIs each of our CRUD operations corresponds to an HTTP method:
+
+![](./node/crud.png)
+
+## Express Routes
+
+### GET Routes
+
+```javascript
+// Get a whole collection of JSON objects
+app.get("/cards", (req, res) => {
+return res.json(cards);
+});
+// Get a specific item in a collection by ID
+app.get("/cards/:cardId", (req, res) => {
+const cardId = req.params.cardId;
+return res.json(cards[cardId]);
+});
+```
+
+### POST Routes
+
+```javascript
+app.post("/cards", (req, res) => {
+// Get body from the request
+const card = req.body;
+// Validate the body
+if (!card.value || !card.suit) {
+return res.status(400).json({
+error: 'Missing required card property',
+});
 }
-
-// Do not export the function
-function somePrivateFunction(){  
-  // ...
-}
-
-module.exports.sayHello = sayHello;
-```
-```javascript
-let sayHello = require('./lib').sayHello;
-
-sayHello();  
-// => Hello
+// Update your collection
+cards.push(card);
+// Send saved object in the response to verify
+return res.json(card);
+});
 ```
 
-- **ES Module (ESM) format**. As of ES6 (ES2015), JavaScript supports a native module format. It uses an `export` keyword to export a module’s public API and an `import` keyword to import it.
+### Routers
 
 ```javascript
-// lib.js
-
-// Export the function
-export function sayHello(){  
-  console.log('Hello');
-}
-
-// Do not export the function
-function somePrivateFunction(){  
-  // ...
-}
-```
-```javascript
-import { sayHello } from './lib';
-// import * as lib from './lib';
-
-sayHello();  
-// => Hello
+// In src/cards.router.js
+const cardsRouter = express.Router();
+cardsRouter.get("/", (req, res) => {
+return res.json(cards);
+});
+cardsRouter.get("/:cardId", (req, res) => {
+const cardId = req.params.cardId;
+return res.json(cards[cardId]);
+});
+// In src/api.js
+const cardsRouter = require('./cards.router');
+const api = express.Router();
+api.use('/cards', cardsRouter);
 ```
 
-# Modules
 
-Instead of writing all the code in one giant file, we can split the code into multiple files called `modules`. Only things that are highly related should go in a module.
+## Folder Structure
 
-This increases maintainability, code reuse and abstraction (blackbox).
+![](./node/project-structure.png)
 
-**CommonJS** (old) - Synchronous
-```javascript
-// foo.js module
-function foo() {
-  return 'bar';
-}
-module.exports.foo = foo;
+![](./node/structure.png)
 
-// index.js use 
-const { foo } = require('foo');
-```
+## Cross Origin Resource Sharing (CORS)
 
-**ES6** - Must use Babel, can be asynchronous
-```javascript
-// foo.js module
-export function foo() {
-  return 'bar';
-}
+Browsers follow the Same Origin Policy (SOP), which prevents requests being made across different origins. This is designed to stop malicious servers from stealing information that doesn't belong to them.
 
-// index.js use
-import { foo } from 'foo';
-```
-
-Every file in Node is considered a module. Everything declared inside is scoped to the file i.e. they are private.
-
-Node does not give access to the global scope. In order to use the content of a module, we need to export it i.e. make it public.
-
-```javascript
-var message = "hello";
-console.log(global.message); // undefined
-```
-
-## ES6 Modules
-
-A proper format, unlike the CommonJS convention.
-
-```javascript
-// add.js
-export function add(a, b) {
-    return a + b;
-}
-
-// index.js
-import { add } from "./add";
-```
-
-Modules are exported with `export` and imported with `import`. We can export one or more objects from a module.
-
-There are `default` and `named` exports. We use a default export if there is a single object we want to export.
-
-**module**
-
-```javascript
-import { Person } from "./person";
-
-// Named export
-export function promote() {}
-
-// Default export
-export default class Teacher extends Person {
-    constructor(name, degree) {
-        super(name);
-        this.degree = degree;
-    }
-
-    teach() {
-        console.log("teach");
-    }
-}
-```
-
-**import**
-
-```javascript
-import Teacher, { promote } from "./teacher";
-
-// Default -> import ... from "";
-// Named -> import { ... } from "";
-
-const teacher = new Teacher("John", "MSc");
-teacher.teach();
-```
-
-### Browsers
-
-Must include the `.js` file extension during import.
-
-**circle.js**
-
-```javascript
-// Implementation detail, not exported
-const _radius = new WeakMap(); // private property
-
-// Public interface i.e. exported part
-export class Circle {
-    constructor(radius) {
-        _radius.set(this, radius);
-    }
-
-    draw() {
-        console.log("Circle with radius" + _radius.get(this));
-    }
-}
-```
-
-**index.js**
-
-```javascript
-import { Circle } from "./circle.js"; // Must include the .js file extension
-
-const c = new Circle(10);
-c.draw(); // Circle with radius 10
-```
-
-**index.html**
-
-We need to add the module type in order to avoid the `Uncaught SyntaxError: Unexpected token {` error, caused by the `import` curly brace.
-
-```html
-<script type="module" src="index.js"></script>
-```
-
-## Old formats
-
-Conventions/syntax for defining modules. ES6 natively supports them.
-
--   **CommonJS** - Loads files synchronously.
-
-Since ES5 doesn't support modules, developers came up with different syntaxes to define them. These are only used in legacy applications.
-
--   **AMD** (Browser) - Asynchronous Module Definition.
--   **UMD** (Browser / Node)- Universal Module Definition.
-
-### CommonJS (Node)
-
-Two problems:
-
-1. Browsers cannot load files synchronously. This is solved via bundling a huge file including everything, even unused things.
-2. JS engine cannot tell what a module exports until it runs it.
-
-```javascript
-// add.js
-function add(a, b) {
-    return a + b;
-}
-module.exports = add;
-
-// index.js
-const add = require("./add"); // Loads synchronously
-add(2, 3); // 5
-```
-
-CommonJS defines the:
-
--   `module.exports` for exporting modules. It represents the object that is exported from a module.
-    -   `module` refers to the current module (file).
-    -   `exports` is an object and property of `module`.
--   `require("./module")` for importing modules.
-
-#### Single class export
-
-When we import the `foo.js` module, we directly get the `Foo` class.
-
-```javascript
-class Foo {}
-
-module.exports = Foo;
-```
-
-#### Multiple class exports
-
-We can import the `exports` objects and access its properties.
-
-```javascript
-class Foo {}
-class Bar {}
-
-module.exports.Foo = Foo;
-module.exports.Bar = Bar;
-```
-
-#### Example
-
-**circle.js**
-
-```javascript
-// Implementation detail, not exported
-const _radius = new WeakMap(); // private property
-
-// Public interface i.e. exported part
-class Circle {
-    constructor(radius) {
-        _radius.set(this, radius);
-    }
-
-    draw() {
-        console.log("Circle with radius" + _radius.get(this));
-    }
-}
-
-module.exports = Circle;
-```
-
-**index.js**
-
-```javascript
-const Circle = require("./circle");
-
-const c = new Circle(10);
-c.draw(); // Circle with radius 10
-```
-
-### [Node.js Course](./node/nodejs.md)
-
-### [Node.js Rest APIs with Express & MySQL](./node/restapi.md)
-
-
+**CORS** allows us to allow or whitelist other origins
+that we trust, so that we can make requests to servers that don't belong to us.
