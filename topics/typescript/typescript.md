@@ -1,6 +1,7 @@
 ## TypeScript 
-
-### [TypeScript with React](./r-type.md)
+---
+## [TypeScript with React](./r-type.md)
+---
 
 TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. It offers classes, modules, and interfaces to help you build robust components.
 
@@ -16,7 +17,7 @@ TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. 
 
 ---
 
-### Compiling TypeScript
+## Compiling TypeScript
 
 To be able to compile, install typescript first as shown below.
 
@@ -38,87 +39,55 @@ tsc filename.ts -w
 
 ---
 
-### Type Basics
+## Type Basics
 
 ```javascript
-let name = 'john';
-let age = 30;
-let isWorking = false;
+//String
+let name: string = "something";
 
-name = 10; //this will give you an error in TS because it was initially defined as a type string
+//Number
+let num: number = 42;
 
-name = 'sam'; // this will work just fine, same with age if you change it to another number of isWorking to true
-```javascript
+//Boolean
+let isValid: boolean = true;
 
-```javascript
-const circ = (diameter: number) => {
-    //here we calculate the circumference of a circle by multiplying the diameter with the 3.14(PI)
-    //we define the type of the variable like this --> x: number, y: string
-    //In JS, if we add a string as an argument to this function, it will give us NaN
-    //In TS, this immediately warns us that something is wrong, it won't compile
-    return diameter * Math.PI;
+//Object
+let wizard: object = {
+    a: "Something"
 }
 
-console.log(circ(5))
-```
+//Array
+let pets: string[] = ["cat", "dog", "rhinoceros"];
+let pets2: Array<string> = ["lion", "dragon", "mouse"];
 
+//Null & undefined
+let meh: undefined = undefined;
+let noo: null = null;
+
+//Tuple - can contain two values of different data types.
+let basket: [string, number] = ["bananas", 3];
+
+//Enum - allow us to declare a set of named constants i.e. a collection of related values that can be numeric or string values (Typically names with a capital 1st letter)
+enum Size {Small = 1, Medium = 2, Large = 3};
+let currentSize: string = Size[2];
+console.log(currentSize) // Medium
+let sizeNum: number = Size.Large;
+
+
+// Interface - a structure that defines the contract in your application. It defines the syntax for classes to follow
+interface IEmployee {
+    empCode: number;
+    empName: string;
+    getSalary: (number) => number; // arrow function
+    getManagerName(number): string; 
+}
+
+
+
+```
 ---
 
-### Objects & Arrays
-
-```javascript
-let names = ["luigi", "mario", "yoshi"];
-
-names.push("tod"); //this obviously works
-names.push(3); //this gives us an error
-```
-
-```javascript
-let mixed = ["john", 3, true, null];
-mixed.push("hans"); // this works since mixed was initialized as an array with different data types
-```
-
-```javascript
-let warrior = {
-    name: "sub-zero",
-    ability: "cryomancer",
-    age: 30
-}
-
-warrior.name = "scorpion" // this is fine
-warrior.ability = true // this is NOT fine, the data types of the properties of the object are defined when the object is initialized 
-
-warrior.isAlive = false; // you can't add new properties once the object is declared
-```
-
-```javascript
-let person = {
-    name: "John",
-    age: 30,
-    isAlive: true
-}
-
-//this will not work because the property isAlive is left out, it has to be included in TS
-person = {
-    name: "Carol",
-    age: 21
-}
-```
-
----
-
-### Explicit Types
-
-```javascript
-//Explicitly defining types
-let character: string = "John";
-let age: number = 30;
-let isLoggedIn: boolean = false;
-
-let people: string[] = []; //or let people: string[]; --> this way, you won't be able to push items into the array, first you will need to initialize it like so --> people = [arrItems]
-```
-
-#### Union Types
+## Union Types
 
 Occasionally, you’ll run into a library that expects a parameter to be either a number or a string. We do this with adding union types.
 
@@ -152,7 +121,7 @@ let user2: {
 
 ---
 
-### Dynamic (any) Types
+## Dynamic (any) Types
 
 ```javascript
 let age: any = 25;
@@ -165,7 +134,174 @@ let person: {name: any; age: any};
 
 ---
 
-### Workflow & tsconfig
+## Function Basics
+
+```javascript
+//Explicitly defining function type
+
+let greet: Function;
+
+//Explicitly defining function argument types
+const add = (a: number, b: number) => {
+    return a + b;
+}
+
+//Optional arguments
+const greetPerson = (greet: string, personName?: string) => {
+    // Use ?: to make it optional, if you don't and you forget to include the second argument, it will throw an error
+}
+
+const subtract = (a: number, b: number, c = 10) => {
+    //If you give an argument a default value, you don't have to use ?: to make it optional
+    return a - b - c
+}
+
+// The type is inferred by the return value of the function, which is a number in this case
+let result = subtract(50, 10);
+
+//Changing it to something else will give you an error
+result = "mike";
+
+
+//You an also declare the return type of a function like so
+const personInfo = (name: string, age: number): Object => {
+    return {
+        name,
+        age
+    }
+}
+
+//When there is no return value, you can declare the return type of the function as void
+const printToConsole = (): void => {
+    console.log(1, 2, 3);
+}
+
+//never type is used when you are sure that something is never going to occur.
+function throwError(errorMsg: string): never { 
+            throw new Error(errorMsg); 
+}
+
+let greet: (a: string, b: string) => void;
+
+//this has to match the signature above, name & greeting have to be strings as declared above
+greet = (name: string, greeting: string) => {
+    return `${greeting}, ${name}!`
+}
+
+//Here's another example
+let calc: (a: number, b: number, c: string) => number;
+
+calc = (num1: number, num2: number, action: string) => {
+    switch (action) {
+        case "add":
+            return num1 + num2;
+        case "subtract":
+            return num1 - num2;
+        case "multiply":
+            return num1 * num2;
+        case "divide":
+            return num1 / num2;
+        default:
+            return 1;
+    }
+}
+```
+
+---
+
+## Type Aliases
+
+```javascript
+//In order not to repeate code, you can declare type aliases like so
+
+type StringOrNum = string | number;
+type boolOrStr = boolean | string;
+
+let newFunc = (value1: StringOrNum, value2: boolOrStr) => {
+    //function logic
+}
+
+// We can do the same with objects
+type objWithName = {name: string, uid: StringOrNum};
+
+const greet = (user: objWithName) => {
+    console.log(`${user.name} says hello`)
+}
+```
+---
+
+## The DOM & Type Casting
+
+```javascript
+const anchor = document.querySelector("a");
+
+//If you try this, it will give you an error
+console.log(anchor.hrer); 
+
+//So you add an ! mark at the end of the query selector, like so:
+const anchor = document.querySelector("a")!;
+
+// OR
+console.log(anchor?.hrer); 
+```
+
+```javascript
+//If you do this, it will show that form is of type Element, since you're grabbing it by the class name
+const form = document.querySelector('.new-item-form');
+
+//So what we can do is this
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+const type = document.querySelector("#type") as HTMLSelectElement;
+const toFrom = document.querySelector("#toFrom") as HTMLInputElement;
+```
+
+```javascript
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
+
+//event objects take Event as a type
+form.addEventListener("submit" ,(e: Event) => {
+    e.preventDefault();
+    console.log(
+        type.value,
+        toFrom.value,
+        details.value,
+        //amount.value will give us a number, but JS turns it into a string, so you can do this
+        amount.valueAsNumber
+    )
+})
+```
+
+---
+
+## Classes
+
+```javascript
+class Animal {
+    private eat: string = "nom nom";
+    public sing: string = "lalalal";
+
+    constructor(sound: string) {
+        this.sing = sound;
+    }
+
+    greet() {
+        return `Hello ${this.sing}`
+    }
+
+    eatFood() {
+        return this.eat;
+    }
+}
+
+let lion = new Animal("RAAAWR");
+console.log(lion.greet());
+console.log(lion.eatFood());
+console.log(lion.eat()); // this will give an error - eat is private;
+```
+
+---
+
+## Workflow & tsconfig
 
 It's a good idea to seperate your files into seperate folders like so:
 
@@ -246,144 +382,4 @@ You don't want anything outside the src folder to be compiled. To avoid this, yo
   },
   "include": ["src"]
 }
-```
-
----
-
-### Function Basics
-
-```javascript
-//Explicitly defining function type
-
-let greet: Function;
-
-//Explicitly defining function argument types
-const add = (a: number, b: number) => {
-    return a + b;
-}
-
-//Optional arguments
-const greetPerson = (greet: string, personName?: string) => {
-    // Use ?: to make it optional, if you don't and you forget to include the second argument, it will throw an error
-}
-
-const subtract = (a: number, b: number, c = 10) => {
-    //If you give an argument a default value, you don't have to use ?: to make it optional
-    return a - b - c
-}
-
-// The type is inferred by the return value of the function, which is a number in this case
-let result = subtract(50, 10);
-
-//Changing it to something else will give you an error
-result = "mike";
-
-
-//You an also declare the return type of a function like so
-const personInfo = (name: string, age: number): Object => {
-    return {
-        name,
-        age
-    }
-}
-
-//When there is no return value, you can declare the return type of the function as void
-const printToConsole = (): void => {
-    console.log(1, 2, 3);
-}
-```
-
----
-
-### Type Aliases
-
-```javascript
-//In order not to repeate code, you can declare type aliases like so
-
-type StringOrNum = string | number;
-type boolOrStr = boolean | string;
-
-let newFunc = (value1: StringOrNum, value2: boolOrStr) => {
-    //function logic
-}
-
-// We can do the same with objects
-type objWithName = {name: string, uid: StringOrNum};
-
-const greet = (user: objWithName) => {
-    console.log(`${user.name} says hello`)
-}
-```
-
----
-
-### Function Signatures
-
-```javascript
-let greet: (a: string, b: string) => void;
-
-//this has to match the signature above, name & greeting have to be strings as declared above
-greet = (name: string, greeting: string) => {
-    return `${greeting}, ${name}!`
-}
-
-//Here's another example
-let calc: (a: number, b: number, c: string) => number;
-
-calc = (num1: number, num2: number, action: string) => {
-    switch (action) {
-        case "add":
-            return num1 + num2;
-        case "subtract":
-            return num1 - num2;
-        case "multiply":
-            return num1 * num2;
-        case "divide":
-            return num1 / num2;
-        default:
-            return 1;
-    }
-}
-```
-
-
-### The DOM & Type Casting
-
-```javascript
-const anchor = document.querySelector("a");
-
-//If you try this, it will give you an error
-console.log(anchor.hrer); 
-
-//So you add an ! mark at the end of the query selector, like so:
-const anchor = document.querySelector("a")!;
-
-// OR
-console.log(anchor?.hrer); 
-```
-
-```javascript
-//If you do this, it will show that form is of type Element, since you're grabbing it by the class name
-const form = document.querySelector('.new-item-form');
-
-//So what we can do is this
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
-const type = document.querySelector("#type") as HTMLSelectElement;
-const toFrom = document.querySelector("#toFrom") as HTMLInputElement;
-```
-
-```javascript
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
-
-//event objects take Event as a type
-form.addEventListener("submit" ,(e: Event) => {
-    e.preventDefault();
-    console.log(
-        type.value,
-        toFrom.value,
-        details.value,
-        //amount.value will give us a number, but JS turns it into a string, so you can do this
-        amount.valueAsNumber
-    )
-})
 ```
