@@ -57,31 +57,36 @@ let wizard: object = {
 }
 
 //Array
+
 let pets: string[] = ["cat", "dog", "rhinoceros"];
+
 let pets2: Array<string> = ["lion", "dragon", "mouse"];
 
 //Null & undefined
 let meh: undefined = undefined;
+
 let noo: null = null;
 
 //Tuple - can contain two values of different data types.
 let basket: [string, number] = ["bananas", 3];
 
 //Enum - allow us to declare a set of named constants i.e. a collection of related values that can be numeric or string values (Typically names with a capital 1st letter)
+
 enum Size {Small = 1, Medium = 2, Large = 3};
+
 let currentSize: string = Size[2];
 console.log(currentSize) // Medium
 let sizeNum: number = Size.Large;
 
 
 // Interface - a structure that defines the contract in your application. It defines the syntax for classes to follow
+
 interface IEmployee {
     empCode: number;
     empName: string;
     getSalary: (number) => number; // arrow function
     getManagerName(number): string; 
 }
-
 
 
 ```
