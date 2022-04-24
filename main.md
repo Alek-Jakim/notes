@@ -4,6 +4,8 @@
 
 ## [Data Structures & Algorithms](./topics/algos/algo.md)
 
+## [HTML5 Canvas](./topics/html/canvas.md)
+
 ## [React](./topics/react.md)
 
 ## [TypeScript](./topics/typescript/typescript.md)

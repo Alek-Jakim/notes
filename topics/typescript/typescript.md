@@ -68,6 +68,7 @@ let meh: undefined = undefined;
 let noo: null = null;
 
 //Tuple - can contain two values of different data types.
+
 let basket: [string, number] = ["bananas", 3];
 
 //Enum - allow us to declare a set of named constants i.e. a collection of related values that can be numeric or string values (Typically names with a capital 1st letter)
