@@ -2,7 +2,7 @@
 
 ## [Javascript](./topics/javascript.md)
 
-## [Data Structures & Algorithms](./topics/algos/algo.md)
+## [Python](./topics//python/python.md)
 
 ## [HTML5 Canvas](./topics/html/canvas.md)
 

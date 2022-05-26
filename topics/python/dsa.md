@@ -1,3 +1,3 @@
 # Data Structures & Algorithms
 
-### [Data Structures & Algorithms](./dsa/bigo.md)
+### [Big O Notation](./dsa/bigo.md)
