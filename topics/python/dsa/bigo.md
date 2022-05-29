@@ -4,6 +4,8 @@ Big O notation is a mathematical notation that describes the limiting behavior o
 
 In normal people talk, it means that Big O describes the complexity of your code using algebraic terms.
 
+[Big-O Cheat Sheet](https://www.bigocheatsheet.com/)
+
 
 ## 1. `O(n)` - Linear Time
 
@@ -139,5 +141,35 @@ my_list.pop()
 # This time, there is reindexing for all the items in the list, hence this is a O(n)
 my_list.pop(0)
 my_list.insert(0, 11)
-
 ```
+
+---
+
+## Recap
+
+1.  What is the Big O time complexity when you have a loop within a loop?
+
+* <details><summary>Answer</summary>O(n^2)</details>
+
+
+2. How would the following be written: O(100n^2) ?
+
+* <details><summary>Answer</summary>O(n^2) - We drop constants</details>
+
+
+3. What Big O is associated with Divide and Conquer?
+
+* <details><summary>Answer</summary>O(log n) is divide and conquer.</details>
+
+
+4. What is the correct way to write:  O(n^2 + n) ?
+
+* <details><summary>Answer</summary>O(n^2) - We drop non-dominants</details>
+
+5. What is the most efficient Big O ?
+
+* <details><summary>Answer</summary>O(1) - also known as constant time</details>
+
+
+
+
