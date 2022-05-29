@@ -1,11 +1,11 @@
-## Big-O Notation
+# Big-O Notation
 
 Big O notation is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity.
 
 In normal people talk, it means that Big O describes the complexity of your code using algebraic terms.
 
 
-1. `O(n)` - Linear Time
+## 1. `O(n)` - Linear Time
 
 ```python
 def print_items(n):
@@ -28,7 +28,7 @@ def print_items(n):
 # We can simplify this by dropping the constant and write it O(n), even if it's O(4n) or O(10n)
 ```
 
-2. O(n<sup>2</sup>)
+## 2. O(n<sup>2</sup>)
 
 ```python
 def print_items(n):
@@ -63,7 +63,7 @@ def print_items(n):
 # So we write it as O(n^2)
 ```
 
-3. O(1) - Constant Time
+## 3. O(1) - Constant Time
 
 ```python
 def add_items(n):
@@ -74,7 +74,7 @@ def add_items(n):
 # A good example of O(1) time is accessing a value with an array index. Other examples include: push() and pop() operations on an array.
 ```
 
-4. O(log n)
+## 4. O(log n)
 
 ```python
 list = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -97,3 +97,28 @@ How many times do you have to divide 8 by 2 to get to one item?
 
 
 ### ![](./bigo.jpeg)
+
+
+## 5. Different Terms for Inputs
+
+When we have 2 different params, we can't say it's simply O(n). We can't say a = n and b = n, they are two different things.
+
+The most we can simplify this is say it is O(a + b).
+
+```python
+def print_items(a, b):
+    for i in range(a):
+        print(i)
+
+    for j in range(b):
+        print(j)
+```
+
+
+With a nested loop like below, it would be O(a * b)
+```python
+def print_items(a, b):
+    for i in range(a):
+        for j in range(b):
+            print(i, j)
+```
