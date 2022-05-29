@@ -122,3 +122,22 @@ def print_items(a, b):
         for j in range(b):
             print(i, j)
 ```
+
+## 6. Big O - Lists
+
+```python
+
+my_list = [11, 3, 23, 7]
+
+
+# Both of these methods are equal to 1 operation, there is no need for reindexing since append() appends an items at the end of the list and pop() removes the last item
+my_list.append(30)
+my_list.pop()
+
+
+
+# This time, there is reindexing for all the items in the list, hence this is a O(n)
+my_list.pop(0)
+my_list.insert(0, 11)
+
+```
