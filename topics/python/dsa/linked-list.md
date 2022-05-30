@@ -59,3 +59,23 @@ class LinkedList:
 
 my_linked_list = LinkedList(4)
 ```
+
+## 4. Append
+
+```python
+    def append_node(self, value):
+        new_node = Node(value)
+        # Check if there aren't any nodes
+        if self.head is None:
+            self.tail = new_node
+            self.head = new_node
+            self.length = 1
+        else:
+            # Set the tail and pointer to the new node
+            self.tail.next = new_node
+            self.tail = new_node
+            # Increase ll length
+            self.length += 1
+
+            return True
+```
