@@ -29,3 +29,33 @@ In simple words, a linked list consists of nodes where each node contains a data
 ## 2. Big-O for Linked List & List
 
 ![](./ll-list.png)
+
+
+## 3. Linked List Constructor
+
+```python
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self, value):
+        new_node = Node(value)
+        # when there's 1 node, both the tail and head point to it
+        self.head = new_node
+        self.tail = new_node
+        # keep track of how many nodes
+        self.length = 1
+
+    # Prints out all nodes in the list
+    def print_list(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
+
+
+my_linked_list = LinkedList(4)
+```
