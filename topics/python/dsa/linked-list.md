@@ -60,7 +60,7 @@ class LinkedList:
 my_linked_list = LinkedList(4)
 ```
 
-## 4. Append
+## 4. Append Node
 
 ```python
     def append_node(self, value):
@@ -79,3 +79,31 @@ my_linked_list = LinkedList(4)
 
             return True
 ```
+
+## 5. Pop Node
+
+```python
+    def pop_node(self):
+        # If list is empty
+        if self.length == 0:
+            return None
+
+        temp = self.head
+        pre = self.head
+        # This will be false for the last item of the list, the one we want to remove
+        while temp.next:
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+
+        # this is after decrementing the length
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+
+        # return the popped node value
+        return temp.value
+```
+
