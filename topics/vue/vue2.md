@@ -82,8 +82,10 @@ Vue is a progressive framework for building user interfaces. Unlike other monoli
 ## User Input
 
 ```html
+<!--TWO WAY DATA BINDING-->
     <div id="app">
         <button v-on:click="reverse()">Reverse Message</button>
+        <!--syncs the state of the form input with the corresponding state in JS. It works like the  onChange event handler in React-->
         <input type="text" v-model="message">
         <h3>{{message}}</h3>
     </div>
