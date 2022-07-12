@@ -4,7 +4,7 @@
 
 ## [Python](./topics//python/python.md)
 
-## [HTML5 Canvas](./topics/html/canvas.md)
+## [Vue](./topics/vue/vue.md)
 
 ## [React](./topics/react.md)
 
