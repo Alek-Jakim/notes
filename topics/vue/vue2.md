@@ -153,6 +153,34 @@ let app = new Vue({
 </body>
 ```
 
+### Keyboard Events
+
+```html
+<body>
+    <div id="app">
+        <label>Name</label>
+        <input type="text" v-on:keyup="logName">
+        <label>Age</label>
+        <!--This will only execute on clicking Enter-->
+        <input type="text" v-on:keyup.enter="logAge">
+    </div>
+<script>
+    let app = new Vue({
+        el: "#app",
+        methods: {
+            logName: function(e) {
+                console.log(`Name: ${e.target.value}`)
+            },
+            logAge: function(e) {
+                console.log(`Age: ${e.target.value}`)
+            }
+        }
+    })
+</script>
+</body>
+```
+
+
 ### Mouse Events
 
 
