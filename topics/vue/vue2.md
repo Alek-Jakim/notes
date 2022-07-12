@@ -107,3 +107,83 @@ let app = new Vue({
     }
 });
 ```
+
+## Events
+
+
+### Click Events
+
+```html
+ <body>
+
+    <div id="app">
+        <h1>Events</h1>
+        <button v-on:click="add">Add a year</button>
+        <button v-on:click="subtract">Subtract a year</button>
+        <!--double click event-->
+        <button v-on:dblclick="addTen">Add 10 years</button>
+        <button v-on:dblclick="subtractTen">Subtract a year</button>
+
+        <p>{{age}}</p>
+    </div>
+    
+<script>
+
+    let app = new Vue({
+        el: "#app",
+        data: {
+            age: 28
+        },
+        methods: {
+            add: function() {
+                this.age += 1;
+            },
+            subtract: function() {
+                this.age -= 1;
+            },
+            addTen: function() {
+                this.age += 10;
+            },
+            subtractTen: function() {
+                this.age -= 10;
+            }
+        }
+    })
+</script>
+</body>
+```
+
+### Mouse Events
+
+
+```html
+<style>
+      #canvas {
+            width: 600px;
+            padding: 200px 20px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+</style>
+
+<div id="app">
+  <div id="canvas" v-on:mousemove="updatePosition">{{x}}, {{y}}</div>
+</div>
+
+<script>
+
+    let app = new Vue({
+        el: "#app",
+        data: {
+            x: 0,
+            y: 0
+        },
+        methods: {
+            updatePosition: function(event) {
+                this.x = event.offsetX
+                this.y = event.offsetY
+            }
+        }
+    })
+</script>
+```
