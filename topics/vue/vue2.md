@@ -187,3 +187,52 @@ let app = new Vue({
     })
 </script>
 ```
+
+### Event Modifiers
+
+It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.
+
+To address this problem, Vue provides event modifiers for v-on. Recall that modifiers are directive postfixes denoted by a dot:
+
+* `.stop`
+
+* `.prevent`
+
+* `.capture`
+
+* `.self`
+
+* `.once`
+
+* `.passive`
+
+```html
+<body>
+
+    <div id="app">
+        <h1>Events</h1>
+        <!-- the click event will be triggered at most once -->
+        <button v-on:click.once="add">Add a year</button>
+        <button v-on:click="subtract">Subtract a year</button>
+
+        <!--Prevents default behaviour, in this case, it won't redirect you to page url, it will just perform the click function-->
+        <a href="https://www.google.com/" v-on:click.prevent="click">Some website</a>
+
+        <p>{{count}}</p>
+    </div>
+    
+<script>
+
+    let app = new Vue({
+        el: "#app",
+        data: {
+            count: 28
+        },
+        methods: {
+          click: function() {
+            //do something
+          }
+    })
+</script>
+</body>
+```
