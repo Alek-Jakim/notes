@@ -266,3 +266,39 @@ To address this problem, Vue provides event modifiers for v-on. Recall that modi
 </script>
 </body>
 ```
+
+
+## Computed Properties
+
+For complex logic that includes reactive data, it is recommended to use a computed property.
+
+```html
+<body>
+    <div id="app">
+        <button v-on:click="a++">Increment A</button>
+        <button v-on:click="b++">Increment B</button>
+        <p>A - {{a}}</p>
+        <p>B - {{b}}</p>
+        <p>Age + A = {{addToA}}</p>
+        <p>Age * B = {{multiplyByB}}</p>
+    </div>
+<script>
+let app = new Vue({
+    el: "#app",
+    data: {
+        age: 28,
+        a: 0,
+        b: 0
+    },
+    computed: {
+        addToA: function() {
+            return this.a + this.age;
+        },
+        multiplyByB: function() {
+            return this.b * this.age;
+        }
+    }
+});
+</script>
+</body>
+```
