@@ -24,10 +24,40 @@
 
 ### DTO - Data Transfer Object
 
-* An object that carries data between processes in order to reduce the number of method calls.
+* It's an object that can be used to transfer data through processes, a process in this case is usually a communication between a client and a server.
 
-* ![](./general-img/dto.png)
+* This process is quite expensive because it will take some time for a single request/response process between the client and the server. To negate this, we can reduce the amount of calls to the server by transfering data between the client and the server in such a way that it is the representation of the different calls we would have made over time, inside a single object.
 
+* DTOs are also usefull when deciding how we persist our data in a database, it would be nice if we can have a client representation of data in a manner that is backwards compatible with how the data is stored in the database, in literal terms the frontend data should mirror the backend data. This allows us to easily upgrade our application since the way data is represented in both the database and the frontend is consistent thus we will not need to edit our data, except we want to add a new property to it, and it's still easier to maintain.
+
+* A DTO is an object that has no methods, only properties. 
+
+
+```typescript
+
+//// user.interface.ts
+
+export interface User {
+ firstName : String;
+ lastName: String;
+ email: String;
+ budget: Number;
+ phoneNumber: Number
+}
+
+// user.ts
+import { User as UserInterface } from './user.interface.ts'
+
+export class User implements UserInterface {
+ constructor(public firstName: String, public lastName: String, public email: String, public budget: Number, public phoneNumber: Number){
+ }
+```
+
+### Serialization
+
+* The process whereby an object or data structure is translated into a format suitable for transfer over a network, or storage (e.g. in an array buffer or file format).
+
+* In JavaScript, for example, you can serialize an object to a JSON string by calling the function JSON.stringify().
 
 ### API - Application Programming Interface
 
