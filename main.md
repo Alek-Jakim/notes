@@ -58,6 +58,8 @@
 * [file permissions](./topics/linux/file-permissions.md)
 
 ---
+
+## [General Stuff](./topics/general.md)
 ## [Computer Science](./topics/cs50/overview.md)
 ---
 [Web Servers](./topics/web-server/server.md)
