@@ -78,3 +78,38 @@ export class User implements UserInterface {
 * The confusion lies in the fact that a pull request and a merge request are actually one and the same—but they differ depending on which sites they’re used (GitHub/Bitbucket vs GitLab). 
 
 * According to GitLab Docs: GitHub and Bitbucket choose the name “pull request” because the first manual action is to pull the feature branch. Tools such as GitLab and others choose the name “merge request” because the final action is to merge the feature branch.”
+
+
+---
+
+## JavaScript
+
+### Statements vs Expressions
+
+Statements are individual instructions that runtime will execute:
+
+```javascript
+let x; // declare a variable 'x'
+
+function foo() {} // declare a function 'foo'
+
+function bar() {
+  return null // return is also a statement
+}
+```
+
+Expressions return (express) a value:
+
+```javascript
+1 + 2 // expresses 3
+
+"foo".toUpperCase() // expresses 'FOO'
+
+5 // this is a literal that expresses number 5
+```
+
+Some statements are also expressions:
+
+```javascript
+x = 1; // assignment statement returns right side value
+```
