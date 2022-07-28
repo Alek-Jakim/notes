@@ -40,20 +40,20 @@ npm run build
 
 ## Basics
 
-Template Syntax:
+#### **Template Syntax**
 
 ```html
  <span> {{ msg }} </span> 
  <span v-text='msg'></span>
 ```
 
-Setting Inner HTML:
+#### **Setting Inner HTML**
 
 ```html
 <span v-html='rawHTML'></span>
 ```
 
-Can use JS Expressions; NOT JS Statements:
+#### **Can use JS Expressions; NOT JS Statements**
 
 ```html
 <!--This is ok-->
@@ -62,3 +62,88 @@ Can use JS Expressions; NOT JS Statements:
 <!--This is not ok-->
 <span> {{ let msg = 'hi' }} </span>
 ```
+
+#### **Conditional rendering**
+
+```html
+<div v-if='date == today'>...</div> 
+
+<div v-else-if='!done'>...</div> 
+
+<div v-else>...</div>
+```
+
+You could use `v-show` for conditional rendering, the difference is that an element with `v-show` will always be rendered and remain in the DOM; `v-show` only toggles the display CSS property of the element. Doesn't work with `v-else`.
+
+```html
+<div v-show='date == today'>...</div>
+```
+
+#### **Handling Events**
+
+```html
+ <div v-on:click='count'>Increase</div> <!-- SHORTHAND -->
+<div @click='count'>Increase</div>
+```
+
+```javascript
+// Method is passed a Native DOM Event
+const count = (event) => { console.log(event.target)
+}
+```
+
+Event modifiers
+
+`.stop` - Stops event propagation
+
+`.once` - Can only trigger event once
+
+`.prevent` - Calls evt.preventDefault
+
+`.self` - Don't send if target = child
+
+#### **Directives**
+
+`v-if` - Puts el in DOM if true
+
+`v-else-if` - Like a usual conditional
+
+`v-else` - Like a usual conditional
+
+`v-show` - Toggles display CSS value
+
+`v-text` - Sets the inner text
+
+`v-html` - Sets the inner HTML
+
+`v-for` - Loop through an array/obj
+
+`v-on` - or `@` Listens to DOM events
+
+`v-bind` - or `:` Reactive updates attribute
+
+`v-model` - Two way data binding
+
+`v-once` - Sets val once; Never update
+
+
+#### **List rendering**
+
+```html
+<!--Basic Loop Over Array-->
+ <li v-for='item in items' :key='item'> 
+ {{ item }}
+</li>
+
+<!--Loop and Track Index-->
+ <li v-for='(item, index) in items'> 
+ {{ index }} : {{ item }}
+</li>
+
+
+<!--Loop Values in Object-->
+ <li v-for='obj in objects'> 
+ {{ obj }}
+ </li>
+```
+
