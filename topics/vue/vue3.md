@@ -147,3 +147,10 @@ Event modifiers
  </li>
 ```
 
+---
+
+# Vue Topics
+
+## [Template Refs](./vue-topics/template-refs.md)
+
+## [Props](./vue-topics/props.md)
