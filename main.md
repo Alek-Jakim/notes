@@ -8,6 +8,8 @@
 
 ## [React](./topics/react.md)
 
+## [React Query](./topics/react-query/react-query.md)
+
 ## [TypeScript](./topics/typescript/typescript.md)
 
 ## [Redux](./topics/redux.md)
@@ -27,6 +29,7 @@
 ## [Sass](./topics/sass.md)
 
 ---
+
 ## Tooling
 
 ## [Git](./topics/git/git.md)
@@ -36,7 +39,9 @@
 ## [Webpack](./topics/webpack/webpack.md)
 
 ## [EJS](./topics/templating/ejs.md)
+
 ---
+
 # Architecture
 
 ## [RESTful](./topics/architecture/rest.md)
@@ -47,19 +52,22 @@
 
 # Linux
 
-* [basics](./topics/linux/basics.md)
+- [basics](./topics/linux/basics.md)
 
-* [filesystem](./topics/linux/filesystem.md)
+- [filesystem](./topics/linux/filesystem.md)
 
-* [shell features](./topics/linux/shell-features.md)
+- [shell features](./topics/linux/shell-features.md)
 
-* [package management](./topics/linux/package-man.md)
+- [package management](./topics/linux/package-man.md)
 
-* [file permissions](./topics/linux/file-permissions.md)
+- [file permissions](./topics/linux/file-permissions.md)
 
 ---
 
 ## [General Stuff](./topics/general.md)
+
 ## [Computer Science](./topics/cs50/overview.md)
+
 ---
+
 [Web Servers](./topics/web-server/server.md)
