@@ -222,4 +222,14 @@ Things to consider when it comes to caching:
 
 - Stale queries will be refetched when the browser window is refocused by the user. To avoid this, we should alter the `refetchOnWindowFocus` property.
 
-## Stale Time
+## Stale Time & Cache Time
+
+`staleTime` tells you how fresh you data is. So if you set staleTime: 120000, in your example, you're guaranteed to not get another network request for two minutes after the first successful one.
+
+`cacheTime` is something totally different. Think about it as a garbage-collect time. It basically describes how long data should be kept in the cache before it can be garbage collected. This is only relevant for unused queries, because active queries can per definition not be garbage collected.
+
+To highlight the differences between the two:
+
+- StaleTime: The duration until a query transitions from fresh to stale. As long as the query is fresh, data will always be read from the cache only - no network request will happen! If the query is stale (which per default is: instantly - 0 seconds), you will still get data from the cache, but a background refetch can happen under certain conditions.
+
+- CacheTime: The duration until inactive queries will be removed from the cache. This defaults to 5 minutes. Queries transition to the inactive state as soon as there are no observers registered, so when all components which use that query have unmounted.
