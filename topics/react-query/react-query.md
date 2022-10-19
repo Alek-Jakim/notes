@@ -233,3 +233,39 @@ To highlight the differences between the two:
 - StaleTime: The duration until a query transitions from fresh to stale. As long as the query is fresh, data will always be read from the cache only - no network request will happen! If the query is stale (which per default is: instantly - 0 seconds), you will still get data from the cache, but a background refetch can happen under certain conditions.
 
 - CacheTime: The duration until inactive queries will be removed from the cache. This defaults to 5 minutes. Queries transition to the inactive state as soon as there are no observers registered, so when all components which use that query have unmounted.
+
+## Refetch Defaults - `refetchOnMount` & `refetchOnWindowFocus`
+
+- `refetchOnMount`
+
+  - Defaults to `true`
+  - If set to `true`, the query will refetch on mount if the data is stale.
+  - If set to "always", the query will always refetch on mount.
+
+- `refetchOnWindowFocus`
+
+  - Defaults to `true`
+  - If set to `true`, the query will refetch on window focus if the data is stale.
+  - If set to "always", the query will always refetch on window focus.
+
+The traditional way of fetchin data is done so that the data is being fetched every time the component mounts.
+
+```JSX
+const RQDragonsPage = () => {
+    const {isError, error, data, isLoading} = useQuery('houses', fetchData, {
+      refetchOnMount: true,
+      refetchOnWindowFocus: true
+    });
+
+    if(isLoading) {
+      return <h3>Loading data...</h3>
+    }
+
+    if(isError) {
+      return <h3>{error.message}</h3>
+    }
+
+   /*
+    ...
+   */
+```

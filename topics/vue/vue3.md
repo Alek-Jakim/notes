@@ -1,6 +1,5 @@
 # Vue 3
 
-
 ## Installation
 
 Install Vue CLI:
@@ -24,7 +23,7 @@ npm init vue@latest
 Creating a project with Vite:
 
 ```bash
-npm init vite-app <project-name> 
+npm init vite-app <project-name>
 # cd <project-name>
 # npm install
 # npm run dev
@@ -43,21 +42,21 @@ npm run build
 #### **Template Syntax**
 
 ```html
- <span> {{ msg }} </span> 
- <span v-text='msg'></span>
+<span> {{ msg }} </span>
+<span v-text="msg"></span>
 ```
 
 #### **Setting Inner HTML**
 
 ```html
-<span v-html='rawHTML'></span>
+<span v-html="rawHTML"></span>
 ```
 
 #### **Can use JS Expressions; NOT JS Statements**
 
 ```html
 <!--This is ok-->
-<span> {{ msg.reverse() }} </span> 
+<span> {{ msg.reverse() }} </span>
 
 <!--This is not ok-->
 <span> {{ let msg = 'hi' }} </span>
@@ -66,9 +65,9 @@ npm run build
 #### **Conditional rendering**
 
 ```html
-<div v-if='date == today'>...</div> 
+<div v-if="date == today">...</div>
 
-<div v-else-if='!done'>...</div> 
+<div v-else-if="!done">...</div>
 
 <div v-else>...</div>
 ```
@@ -76,20 +75,22 @@ npm run build
 You could use `v-show` for conditional rendering, the difference is that an element with `v-show` will always be rendered and remain in the DOM; `v-show` only toggles the display CSS property of the element. Doesn't work with `v-else`.
 
 ```html
-<div v-show='date == today'>...</div>
+<div v-show="date == today">...</div>
 ```
 
 #### **Handling Events**
 
 ```html
- <div v-on:click='count'>Increase</div> <!-- SHORTHAND -->
-<div @click='count'>Increase</div>
+<div v-on:click="count">Increase</div>
+<!-- SHORTHAND -->
+<div @click="count">Increase</div>
 ```
 
 ```javascript
 // Method is passed a Native DOM Event
-const count = (event) => { console.log(event.target)
-}
+const count = (event) => {
+  console.log(event.target);
+};
 ```
 
 Event modifiers
@@ -126,25 +127,17 @@ Event modifiers
 
 `v-once` - Sets val once; Never update
 
-
 #### **List rendering**
 
 ```html
 <!--Basic Loop Over Array-->
- <li v-for='item in items' :key='item'> 
- {{ item }}
-</li>
+<li v-for="item in items" :key="item">{{ item }}</li>
 
 <!--Loop and Track Index-->
- <li v-for='(item, index) in items'> 
- {{ index }} : {{ item }}
-</li>
-
+<li v-for="(item, index) in items">{{ index }} : {{ item }}</li>
 
 <!--Loop Values in Object-->
- <li v-for='obj in objects'> 
- {{ obj }}
- </li>
+<li v-for="obj in objects">{{ obj }}</li>
 ```
 
 ---
@@ -154,3 +147,5 @@ Event modifiers
 ## [Template Refs](./vue-topics/template-refs.md)
 
 ## [Props](./vue-topics/props.md)
+
+## [Slots](./vue-topics/slots.md)
