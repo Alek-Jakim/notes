@@ -284,7 +284,6 @@ We can do this with `refetchInterval`.
 
 ```JSX
     const {isError, error, data, isLoading} = useQuery('houses', fetchData, {
-      staleTime: 30000,
       refetchInterval: 3000
     });
 ```
@@ -295,4 +294,15 @@ As the code above states, a new request will be made every 3 seconds.
 
 **NOTE: Polling is paused when the window loses focus.**
 
-If you want refetching to continue in the background, use `refetchIntervalInBackground`
+If you want refetching to continue in the background, use `refetchIntervalInBackground`.
+
+- `refetchIntervalInBackground`
+
+  - If set to true, queries that are set to continuously refetch with a refetchInterval will continue to refetch while their tab/window is in the background
+
+```JSX
+    const {isError, error, data, isLoading} = useQuery('houses', fetchData, {
+      refetchInterval: 3000,
+      refetchIntervalInBackground: true
+    });
+```
