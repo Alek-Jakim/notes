@@ -269,3 +269,30 @@ const RQDragonsPage = () => {
     ...
    */
 ```
+
+## Polling
+
+Polling refers to the process of fetching data at regular intervals. For example, if you have a component that shows the real-time price of different stocks, you might want to fetch data every second to update the UI.
+
+We can do this with `refetchInterval`.
+
+- `refetchInterval`
+
+  - If set to a number, all queries will continuously refetch at this frequency in milliseconds
+
+  - If set to a function, the function will be executed with the latest data and query to compute a frequency
+
+```JSX
+    const {isError, error, data, isLoading} = useQuery('houses', fetchData, {
+      staleTime: 30000,
+      refetchInterval: 3000
+    });
+```
+
+As the code above states, a new request will be made every 3 seconds.
+
+![](./polling.png)
+
+**NOTE: Polling is paused when the window loses focus.**
+
+If you want refetching to continue in the background, use `refetchIntervalInBackground`
