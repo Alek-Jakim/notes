@@ -306,3 +306,37 @@ If you want refetching to continue in the background, use `refetchIntervalInBack
       refetchIntervalInBackground: true
     });
 ```
+
+## `useQuery` on Click
+
+If you ever want to disable a query from automatically running, you can set the `enabled` option to `false`.
+
+```JSX
+    const {isError, error, data, isLoading} = useQuery('houses', fetchData, {
+      enabled: false
+    });
+```
+
+We can use `refetch`, returned from `useQuery` can be used to manually trigger the query to fetch.
+
+```JSX
+    const {isError, error, data, isLoading, refetch, isFetching} = useQuery('houses', fetchData, {
+      enabled: false
+    });
+
+    if(isLoading || isFetching) {
+      return <h3>Loading data...</h3>
+    }
+
+    if(isError) {
+      return <h3>{error.message}</h3>
+    }
+
+  return (
+    <div  >
+            {/* data.map... */}
+            <button onClick={refetch}>Fetch Data</button>
+
+    </div>
+  )
+```
