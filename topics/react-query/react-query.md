@@ -340,3 +340,22 @@ We can use `refetch`, returned from `useQuery` can be used to manually trigger t
     </div>
   )
 ```
+
+## Success and Error Callbacks
+
+```JSX
+    const onSuccess = (data) => {
+      // we have the data available as a function argument
+      console.log("Perform side effect after data fetching", data);
+    }
+
+    const onError = (error) => {
+     // we have the error available as a function argument
+      console.log("Perform side effect after encountering error", error);
+    }
+
+    const {isError, error, data, isLoading, refetch} = useQuery('houses', fetchData, {
+      onSuccess: onSuccess, // or just onSuccess since the names are the same
+      onError: onError // or just onError since the names are the same
+    });
+```
