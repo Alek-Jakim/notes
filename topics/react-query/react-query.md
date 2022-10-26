@@ -373,3 +373,47 @@ We can use `refetch`, returned from `useQuery` can be used to manually trigger t
       }
     });
 ```
+
+## Custom Query Hook
+
+```JSX
+// app-name/src/hooks/useDragonsData.js
+import { useQuery } from 'react-query'
+import axios from "axios"
+
+const fetchData =  async () => {
+  return axios.get('http://localhost:4000/dragons');
+}
+
+export const useDragonsData = (onSuccess,onError) => {
+    return useQuery('dragons', fetchData, {
+        onSuccess,
+        onError,
+        select: (data) => {
+          return data.data.map((dragon) => dragon.name);
+      }
+      });
+}
+```
+
+```JSX
+// app-name/src/components/RQDragons.page.js
+
+import { useDragonsData } from '../hooks/useDragonsData';
+
+
+    const {isError, error, data, isLoading, refetch} = useDragonsData(onSuccess, onError)
+
+
+    return (
+      <>
+            {
+              data && data.map((dragon, idx) => (
+                <div key={dragon.id ? dragon.id : idx}>
+                   <p>{dragon}</p>
+                </div>
+              ))
+            }
+      </>
+    )
+```
