@@ -359,3 +359,17 @@ We can use `refetch`, returned from `useQuery` can be used to manually trigger t
       onError: onError // or just onError since the names are the same
     });
 ```
+
+## Data Transformation
+
+```JSX
+      const {isError, error, data, isLoading, refetch, } = useQuery('houses', fetchData, {
+      onSuccess,
+      onError,
+      select: (data) => {
+        //this will only return the name property, make sure to update JSX after transformation
+        // could use filter as well
+        return data.map((house) => house.name);
+      }
+    });
+```
