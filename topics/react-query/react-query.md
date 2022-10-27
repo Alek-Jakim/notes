@@ -417,3 +417,48 @@ import { useDragonsData } from '../hooks/useDragonsData';
       </>
     )
 ```
+
+## Query by ID
+
+```JSX
+// app-name/src/hooks/useHouseData.js
+
+import { useQuery } from 'react-query'
+import axios from "axios"
+
+const fetchHouseData =  async ({queryKey}) => {
+  const houseId = queryKey[1];
+  return axios.get(`http://localhost:4000/houses/${houseId}`);
+}
+
+/* this is one way to get the param
+export const useHouseData = (houseId) => {
+    return useQuery(['house', houseId], () => fetchHouseData(houseId));
+};
+*/
+
+export const useHouseData = (houseId) => {
+    return useQuery(['house', houseId], fetchHouseData);
+};
+```
+
+```JSX
+//app-name/components/RQhouse.page.js
+import { useHouseData } from '../hooks/useHouseData'
+import { useParams } from 'react-router-dom';
+
+const RQHouse = () => {
+
+  const {houseId} = useParams();
+
+  const {isError, error, data, isLoading} = useHouseData(houseId);
+
+  return (
+    <>
+        {
+          //example: data.data.name
+        }
+    </>
+  )
+}
+```
