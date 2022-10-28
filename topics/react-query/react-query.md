@@ -462,3 +462,30 @@ const RQHouse = () => {
   )
 }
 ```
+
+## Parallel Queries
+
+```JSX
+const fetchHouses = () => {
+    return axios.get("http://localhost:4000/houses");
+}
+
+const fetchMovies = () => {
+    return axios.get("http://localhost:4000/movies");
+}
+
+const ParallelQueries = () => {
+
+    // use aliases to avoid naming conflicts
+    const {data: houseData} = useQuery('houses', fetchHouses);
+    const {data: movieData} = useQuery('movies', fetchMovies);
+
+  return (
+    <div>
+      {/*  */}
+    </div>
+  )
+}
+```
+
+### To be continued. Next #16 dynamic parallel queries...
