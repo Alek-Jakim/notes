@@ -1,21 +1,25 @@
 ## Basics
-* [Functions](./js/functions.md)
 
-* [Arrays](./js/arr.md)
+- [Functions](./js/functions.md)
 
-* [DOM](dom.md)
+- [Arrays](./js/arr.md)
 
-* [Objects](./objects/object.md)
+- [DOM](dom.md)
 
-* [Regular Expressins](./js/regular_expressions.md)
+- [Regular Expressins](./js/regular_expressions.md)
 
-* [Useful Stuff](./js/useful.md)
+- [Local Storage](./js/local-storage.md)
 
-* [Local Storage](./js/local-storage.md)
+- [Recursion](./js/recursion.md)
 
-* [Recursion](./js/recursion.md)
+- [Undefined vs Null](./js/undef-null.md)
 
-* [Undefined vs Null](./js/undef-null.md)
+---
 
------
+## OOP
+
+[Basics](./js/oopbasics.md)
+
+---
+
 [JavaScript Exercises](./js/challenges/js-challenges.md)

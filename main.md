@@ -24,26 +24,6 @@
 
 ---
 
-## Tooling
-
-## [Git](./topics/git/git.md)
-
-## [Babel](./topics/babel/babel.md)
-
-## [Webpack](./topics/webpack/webpack.md)
-
-## [EJS](./topics/templating/ejs.md)
-
----
-
-# Architecture
-
-## [RESTful](./topics/architecture/rest.md)
-
-## [MVC](./topics/architecture/mvc.md)
-
----
-
 # Linux
 
 - [basics](./topics/linux/basics.md)
