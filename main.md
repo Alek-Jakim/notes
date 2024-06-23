@@ -14,21 +14,13 @@
 
 ## [TypeScript](./topics/typescript/typescript.md)
 
-## [Redux](./topics/redux.md)
-
 ## [Node](./topics/node.md)
 
 ## [Express](./topics/express.md)
 
 ## [MySQL](./topics/mysql.md)
 
-## [MongoDB](./topics/mongodb/mongo.md)
-
 ## [Vue](./topics/vue/vue.md)
-
-## [jQuery](./topics/jquery.md)
-
-## [Sass](./topics/sass.md)
 
 ---
 
@@ -63,13 +55,3 @@
 - [package management](./topics/linux/package-man.md)
 
 - [file permissions](./topics/linux/file-permissions.md)
-
----
-
-## [General Stuff](./topics/general.md)
-
-## [Computer Science](./topics/cs50/overview.md)
-
----
-
-[Web Servers](./topics/web-server/server.md)
