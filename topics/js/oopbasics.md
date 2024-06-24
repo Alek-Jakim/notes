@@ -109,4 +109,63 @@ class Counter {
 }
 ```
 
+---
+
+## Getters & Setters
+
+- `get` & `set` are what are called _accessor properties_; basically functions that execute on getting and setting a value but look like regular properties.
+
+- `get` is usefull when there are properties derived from other values.
+
+```javascript
+// Example 1
+class Circle {
+  constructor(radius) {
+    this._radius = radius;
+    this._diameter = radius * 2;
+  }
+}
+
+const circle1 = new Circle(5);
+// diameter is 10
+circle1._radius = 10;
+// diameter is still 10
+
+// Example 2
+class Circle {
+  static allowedColors = new Set(["red", "green", "blue"]);
+
+  constructor(radius, color) {
+    this._radius = radius;
+    this._color = color;
+  }
+
+  get diameter() {
+    return this._radius * 2;
+  }
+
+  get color() {
+    return this._color;
+  }
+
+  set color(newColor) {
+    if (!Circle.allowedColors.has(newColor)) {
+      throw new Error("Unknown color!");
+    } else {
+      this._color = newColor;
+    }
+  }
+}
+
+const circle2 = new Circle(5, "green");
+// diameter is 10
+circle1._radius = 10;
+// diameter is now 20
+
+circle2.color; // green
+circle2.color = "red";
+circle2.color; // red
+circle2.color = "pink";
+```
+
 [More on JS classes](https://www.freecodecamp.org/news/javascript-classes-how-they-work-with-use-case/)
