@@ -18,7 +18,7 @@
 
 ## OOP
 
-[Basics](./js/oopbasics.md)
+[Basics of OOP](./js/oopbasics.md)
 
 ---
 

@@ -83,6 +83,30 @@ sprite.move(); // Error - the move method exists only on the child class instanc
 
 ## Static properties & methods
 
-# TODO
+- Static properties can't be accessed on class instances, only on the class itself.
+
+- Static methods are often utility functions, such as functions to create or clone objects.
+
+```javascript
+class Counter {
+  // Static property to keep track of the count of instances
+  static instanceCount = 0;
+
+  constructor() {
+    // Increment the count whenever a new instance is created
+    Counter.instanceCount++;
+  }
+
+  // Static method to get the current count of instances
+  static getInstanceCount() {
+    return Counter.instanceCount;
+  }
+
+  // Static method to reset the count
+  static resetInstanceCount() {
+    Counter.instanceCount = 0;
+  }
+}
+```
 
 [More on JS classes](https://www.freecodecamp.org/news/javascript-classes-how-they-work-with-use-case/)
