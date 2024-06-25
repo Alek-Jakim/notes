@@ -168,4 +168,75 @@ circle2.color; // red
 circle2.color = "pink";
 ```
 
+---
+
+## Public & Private Fields; Private Methods
+
+### Public Fields
+
+- Public fields provide a straightforward way to define properties on class instances without needing to use the constructor for initialization. They are useful for setting default values & initializing simple properties.
+
+```javascript
+class Person {
+  // Public field
+  name = "John Doe";
+
+  // Public field
+  age = 30;
+
+  greet() {
+    console.log(
+      `Hello, my name is ${this.name} and I am ${this.age} years old.`
+    );
+  }
+}
+```
+
+### Private Fields & Methods
+
+- Private fields & methods should be used when you need to manage sensitive data (like the account balance) securely. We use the `#` symbol to declare that a field/method is private.
+
+```javascript
+class BankAccount {
+  // Private field - Protects #balance from direct external modification.
+  #balance = 0;
+
+  constructor(accountHolder) {
+    this.accountHolder = accountHolder;
+  }
+
+  deposit(amount) {
+    if (this.#isValidAmount(amount)) {
+      this.#balance += amount;
+      this.#logTransaction("deposit", amount);
+    }
+  }
+
+  withdraw(amount) {
+    if (this.#isValidAmount(amount) && this.#balance >= amount) {
+      this.#balance -= amount;
+      this.#logTransaction("withdraw", amount);
+    } else {
+      console.log("Insufficient funds or invalid amount.");
+    }
+  }
+
+  getBalance() {
+    return this.#balance;
+  }
+
+  // Ensures #isValidAmount is used internally to validate transactions
+  #isValidAmount(amount) {
+    return amount > 0;
+  }
+
+  // Keeps transaction logs private and internal
+  #logTransaction(type, amount) {
+    console.log(
+      `${type} of ${amount} was successful. Current balance: ${this.#balance}`
+    );
+  }
+}
+```
+
 [More on JS classes](https://www.freecodecamp.org/news/javascript-classes-how-they-work-with-use-case/)
