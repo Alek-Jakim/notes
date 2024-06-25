@@ -239,4 +239,52 @@ class BankAccount {
 }
 ```
 
+---
+
+## Static Initialization Block
+
+- These blocks are useful when you need to perform more complex initialization than what can be done with simple assignments.
+
+- It's defined using the `static` keyword followed by a pair of curly braces `{}`.
+
+```javascript
+class Configuration {
+  static settings = {};
+
+  static {
+    // Complex initialization logic
+    this.settings.apiKey = process.env.API_KEY || "default-api-key";
+    this.settings.dbConnectionString =
+      process.env.DB_CONNECTION_STRING || "default-db-connection-string";
+  }
+}
+```
+
+- A good use case for static initialization blocks is when you need to initialize static properties based on some complex logic, such as fetching configuration from environment variables, performing computations, or setting up static resources that require multiple steps.
+
+```javascript
+class AppConfig {
+  static config = {};
+
+  static {
+    // Initialize configuration settings
+    this.config = {
+      apiEndpoint: process.env.API_ENDPOINT || "https://default.api.endpoint",
+      dbHost: process.env.DB_HOST || "localhost",
+      dbPort: parseInt(process.env.DB_PORT, 10) || 5432,
+      featureFlags: {
+        enableNewFeature: process.env.ENABLE_NEW_FEATURE === "true",
+      },
+    };
+
+    // Additional initialization logic if needed
+    if (!this.config.apiEndpoint.startsWith("https")) {
+      console.warn("API endpoint should use HTTPS");
+    }
+  }
+}
+
+console.log(AppConfig.config);
+```
+
 [More on JS classes](https://www.freecodecamp.org/news/javascript-classes-how-they-work-with-use-case/)
