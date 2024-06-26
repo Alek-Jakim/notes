@@ -20,6 +20,8 @@
 
 [Basics of OOP](./js/oopbasics.md)
 
+[`this`](./js/this.md)
+
 ---
 
 [JavaScript Exercises](./js/challenges/js-challenges.md)
