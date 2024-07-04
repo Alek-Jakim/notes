@@ -53,4 +53,82 @@ const dog = {
 
 ### `this` and Classes
 
+```javascript
+// Normal object
+const person = {
+  name: "Mike",
+  hobby: "reading",
+  printInfo: function () {
+    console.log(`${this}`);
+  },
+};
+
+const personPrint = person.printInfo;
+
+personPrint(); // either window obj (browser) or global obj(node)
+
+// Class instance
+class User {
+  constructor(username) {
+    this.username = username;
+  }
+
+  printSth() {
+    console.log(`${this.username} - ${this}`);
+  }
+}
+const user = new User("john");
+user.printSth(); // john - user object
+
+const printFunc = user.printSth;
+
+printFunc(); // Error because this is undefined - also known as "losing the this context"
+```
+
+---
+
+### `call`, `apply` and `bind` Methods
+
+- `call` is a predefined JS method; allows you to call a function with a specific `this` value and arguments provided individually.
+
+```javascript
+// EXAMPLE 1
+function logArguments() {
+  // Convert arguments to a real array
+  var argsArray = Array.prototype.slice.call(arguments);
+
+  // Now we can use array methods on argsArray
+  argsArray.forEach(function (arg) {
+    console.log(arg);
+  });
+}
+
+logArguments([1, 2, 3], "lalala", false);
+
+// EXAMPLE 2
+function takeDamage(damage) {
+  this.hp -= damage;
+}
+
+class Entity {
+  constructor(name, hp) {
+    this.name = name;
+    this.hp = hp ?? 10;
+  }
+
+  printInfo() {
+    console.log(`${this.name} has ${this.hp} HP`);
+  }
+}
+
+const player = new Entity("Player", 20);
+const enemy = new Entity("Enemy");
+
+takeDamage.call(player, 15);
+player.printInfo(); // Player has 5 HP
+
+takeDamage.call(enemy, 9);
+enemy.printInfo(); // Enemy has 1 HP
+```
+
 ## TODO
