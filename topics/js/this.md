@@ -131,4 +131,56 @@ takeDamage.call(enemy, 9);
 enemy.printInfo(); // Enemy has 1 HP
 ```
 
+- The `apply` method is similar to call, but it takes an array (or array-like object) of arguments instead of passing them individually.
+
+```javascript
+// Example 1
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+const numbers = [1, 2, 3];
+
+console.log(sum.call(null, 1, 2, 3)); // Output: 6
+console.log(sum.apply(null, numbers)); // Output: 6
+
+function findLargestNum() {
+  return Math.max.apply(null, arguments);
+}
+
+// Example 2
+function findLargestNum() {
+  const args = Array.prototype.slice.call(arguments);
+  if (args.length === 0) {
+    throw new Error("No numbers were provided!");
+  }
+  return Math.max.apply(null, args);
+}
+
+console.log(findLargestNum()); // throws error
+console.log(findLargestNum(28, 3, 19)); // 28
+```
+
+- The `bind` method returns a new function with a bound this value and optionally preset arguments. You can preset some arguments when binding and provide the rest when calling the bound function.
+
+```javascript
+// Method binding
+const person = {
+  name: "Alice",
+  greet: function (greeting, punctuation) {
+    console.log(greeting + ", " + this.name + punctuation);
+  },
+};
+const boundGreet = person.greet.bind(person);
+boundGreet("Hello", "!"); // Output: Hello, Alice!
+
+// Partial application
+function multiply(a, b) {
+  return a * b;
+}
+
+const double = multiply.bind(null, 2);
+console.log(double(5)); // Output: 10
+```
+
 ## TODO
