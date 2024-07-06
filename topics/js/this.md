@@ -161,7 +161,7 @@ console.log(findLargestNum()); // throws error
 console.log(findLargestNum(28, 3, 19)); // 28
 ```
 
-- The `bind` method returns a new function with a bound this value and optionally preset arguments. You can preset some arguments when binding and provide the rest when calling the bound function.
+- The `bind` method returns a new function with a bound `this` value and optionally preset arguments. You can preset some arguments when binding and provide the rest when calling the bound function.
 
 ```javascript
 // Method binding
@@ -182,5 +182,91 @@ function multiply(a, b) {
 const double = multiply.bind(null, 2);
 console.log(double(5)); // Output: 10
 ```
+
+When you do not directly call functions and instead JS calls them, a keyword `this` is created for you. This is the case for:
+
+- Event Listeners
+- Timers
+- Callback functions (map, filter etc.)
+
+```javascript
+// Bind with event listeners
+const user = {
+  username: "john123",
+  email: "john@gmail.com",
+  printInfo: function () {
+    console.log("This is ", this);
+    console.log(`${this.username} - ${this.email}`);
+  },
+};
+
+const btn = document.getElementById("btn");
+btn.addEventListener("click", user.printInfo); // this points to the btn element; username & email are undefined
+btn.addEventListener("click", user.printInfo.bind(user)); // this points to user
+
+// Bind with timers
+class Counter {
+  constructor(count, incrementStep) {
+    this.count = count ?? 0;
+    this.incrementStep = incrementStep ?? 1;
+  }
+
+  incrementAndPrint() {
+    console.log(this);
+    console.log(this.count);
+
+    this.count += this.incrementStep;
+  }
+
+  start() {
+    setInterval(this.incrementAndPrint, 1000); //if you don't bind it, this will refer to the window object.
+    setInterval(this.incrementAndPrint.bind(this), 1000); // shit works
+  }
+  // The other (better) way is to just use an arrow function
+
+  //  start() {
+  //   setInterval(() => {
+  //     console.log(this.count);
+  //     this.count += this.incrementStep;
+  //   }, 1000);
+  // }
+}
+const counter = new Counter(1, 2);
+counter.start();
+```
+
+- Arrow functions don't make their own `this`.
+
+```javascript
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+
+  printName() {
+    setTimeout(function () {
+      console.log(`Hello ${this.name}`);
+    }, 1000);
+
+    setTimeout(() => {
+      console.log(`Hello ${this.name}`);
+    }, 2000);
+  }
+}
+
+new User("John").printName();
+// Hello - this refers to window obj
+// Hello John - - this refers to User instance
+```
+
+---
+
+Key Takeaways:
+
+- `this` is a keyword whose value is determined **only at the point of function execution**.
+
+- If you're not the one calling the function (callback or sth), you need to make sure JS knows what the `this` context should be.
+
+- There is a global context; what it is depends if you're using the browser(then it's the window) or Node (then it's the global obj).
 
 ## TODO
