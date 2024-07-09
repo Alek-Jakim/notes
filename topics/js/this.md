@@ -268,5 +268,3 @@ Key Takeaways:
 - If you're not the one calling the function (callback or sth), you need to make sure JS knows what the `this` context should be.
 
 - There is a global context; what it is depends if you're using the browser(then it's the window) or Node (then it's the global obj).
-
-## TODO

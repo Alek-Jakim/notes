@@ -22,6 +22,8 @@
 
 [`this`](./js/this.md)
 
+[Prototypes](./js/prototypes.md)
+
 ---
 
 [JavaScript Exercises](./js/challenges/js-challenges.md)
