@@ -109,3 +109,61 @@ console.log(child.__proto__); // parent object
 console.log(child.__proto__.__proto__); // grandparent object
 console.log(child.__proto__.__proto__.__proto__); // object object
 ```
+
+---
+
+### Difference between `__proto__` and `prototype`
+
+Prototype is a property of the constructor function. It's used to set up inheritance.
+
+```javascript
+function User(name) {
+  this.name = name;
+}
+
+User.prototype.printName = function () {
+  console.log(this.name);
+};
+```
+
+`__proto__` is an internal property of an object. It points to the prototype object from which the object has inherited properties and methods. It is part of the mechanism that allows JavaScript objects to inherit from other objects. It is used to navigate the prototype chain.
+
+```javascript
+const user1 = new User("Alice");
+
+console.log(user1.__proto__ === User.prototype); // Output: true
+```
+
+---
+
+### Useful Prototype Methods
+
+`Object.create` - creates a new object, using and existing object as the prototype of the newly created object.
+
+```javascript
+// Object.create
+const user = {
+  isLoggedIn: false,
+  printInfo() {
+    console.log(this.name, this.age);
+  },
+};
+
+const user2 = Object.create(user, {
+  name: {
+    value: "John",
+    writable: true,
+  },
+  age: {
+    value: 17,
+    writable: false,
+  },
+});
+
+user2.printInfo(); // John 17
+console.log(user2.isLoggedIn); // false
+
+//Object.getPrototypeOf
+
+console.log(Object.getPrototypeOf(user2)); // {isLoggedIn: false, printInfo: ƒ}
+```
