@@ -4,11 +4,9 @@
 
 ## [Javascript](./topics/javascript.md)
 
-## [Python](./topics//python/python.md)
-
-## [Vue](./topics/vue/vue.md)
-
 ## [React](./topics/react.md)
+
+## [Next.js](./topics/next/next-main.md)
 
 ## [React Query](./topics/react-query/react-query.md)
 
@@ -21,6 +19,8 @@
 ## [MySQL](./topics/mysql.md)
 
 ## [Vue](./topics/vue/vue.md)
+
+## [Python](./topics//python/python.md)
 
 ---
 
