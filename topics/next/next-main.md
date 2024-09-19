@@ -18,3 +18,7 @@
 - They can't read files, but can use hooks & manage interactions.
 
 ---
+
+Main Topics:
+
+## [Routing](./next-routing.md)
