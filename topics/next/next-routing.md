@@ -109,3 +109,15 @@ export default DocsPage;
 ```
 
 - If you go to `http://localhost:3000/docs` (presuming there's no "./app/docs/page.tsx" file.), you'll get a big, fat 404 - Page Not Found. To prevent that shit, just rename the `[...slug]` folder to [[...slug]]. This is called **Optional Catch-all Segment**, if you wanna get all fancy. It just means that `/docs` is also matched.
+
+- Here's the folder structure:
+
+```
+└── 📁app
+    └── 📁docs
+        └── 📁[[...slug]]
+            └── page.tsx
+    └── globals.css
+    └── layout.tsx
+    └── page.tsx
+```
