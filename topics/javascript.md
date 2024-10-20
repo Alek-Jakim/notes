@@ -26,4 +26,10 @@
 
 ---
 
+## Miscellaneous
+
+[Design Patterns](./js/design-patterns.md)
+
+---
+
 [JavaScript Exercises](./js/challenges/js-challenges.md)
