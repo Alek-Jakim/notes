@@ -20,7 +20,9 @@
 
 ## [Vue](./topics/vue/vue.md)
 
-## [Python](./topics//python/python.md)
+## [Python](./topics/python/python.md)
+
+## [Go](./topics/go/go.md)
 
 ---
 
