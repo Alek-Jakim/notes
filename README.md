@@ -24,6 +24,8 @@
 
 ## [Go](./topics/go/go.md)
 
+## [Lua/Love2D](./topics/love/love.md)
+
 ---
 
 # Linux
