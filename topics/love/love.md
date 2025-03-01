@@ -4,6 +4,8 @@
 
 #### [Collision](./collision.md)
 
+#### [Dialogue](./dialogue.md)
+
 #### [Scope](./scope.md)
 
 ---
