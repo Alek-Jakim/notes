@@ -26,6 +26,8 @@
 
 ## [Lua/Love2D](./topics/love/love.md)
 
+## [Phaser](./topics/phaser/phaser-reference.md)
+
 ---
 
 # Linux
